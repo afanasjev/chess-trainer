@@ -1,0 +1,14 @@
+[Event "Новоиндийская защита: Глава 3"]
+[Date "2022.05.23"]
+[Result "*"]
+[Variant "Standard"]
+[ECO "E00"]
+[Opening "Catalan Opening"]
+[StudyName "Новоиндийская защита"]
+[ChapterName "Глава 3"]
+[ChapterURL "https://lichess.org/study/74hxrQk7/KXeQ6arj"]
+[Annotator "https://lichess.org/@/Egor-Kovalev"]
+[UTCDate "2022.05.23"]
+[UTCTime "07:45:19"]
+
+1. d4 (1. c4 e6 2. Nc3 b6 3. e4 Bb7 4. Nf3 Bb4 { [%csl Ge4] } 5. Bd3 Ne7 6. O-O O-O 7. Bc2 f5 { [%cal Gb7h1] } 8. exf5 Nxf5 9. d4 Bxf3 10. Qxf3 { [%cal Gf3a8] } 10... Nc6) 1... e6 (1... Nf6 2. Bg5 (2. Nc3 d5 { [%cal Gf2f3] } 3. Bf4 { [%cal Gf2f3] } (3. Bg5 e6 4. e4 h6 5. Bxf6 Qxf6 6. exd5 Bb4 7. dxe6 Bxe6 8. Nf3 O-O 9. Bd3 c5 { [%cal Gb4c3,Gf6c3] }) 3... e6 4. e3 { [%cal Gb7b6] } 4... Bb4 5. a3 Bxc3+ 6. bxc3 O-O 7. Nf3 b6 8. Bd3 Ba6 { [%cal Gc8a6,Ga6f1] }) 2... e6 3. e4 { [%cal Gg5d8] } (3. Nd2 h6 4. Bh4 c5 5. c3 (5. e4 cxd4 6. e5 g5 7. Bg3 Nd5 8. h4 gxh4 9. Rxh4 Nc6 10. Ngf3 Rg8 { [%cal Gf3d4,Gg8g3,Gf2g3,Gc6e5] } 11. Nxd4 Rxg3 12. fxg3 { [%cal Gd4c6] } 12... Nxd4 13. Rxd4 Ne3 { [%cal Ge3c2] } 14. Qc1 Qg5 { [%cal Gg5e5,Gg5g3] }) 5... cxd4 6. cxd4 Qb6 7. e3 Qxb2) 3... h6 { [%cal Gg5h4,Gg7g5,Gh4f3,Gf6e4] } 4. Bxf6 Qxf6 { [%csl Gc5] } 5. Nc3 { [%cal Gd4c5] } 5... b6 6. Qd2 Bb7 7. O-O-O Bb4 { [%cal Gb7e4] } 8. f3 { [%cal Gf6g5,Ge8g8,Ge8c8] }) 2. c4 (2. Nc3 { [%cal Gg8f6,Ge2e4] } 2... d5 { [%cal Gd5e4] } 3. Bf4 (3. e4 dxe4) 3... Bb4 4. a3 Bxc3+ 5. bxc3 Nf6 { [%csl Gf1,Ga6][%cal Gb7b6,Gc8a6] }) 2... Nf6 3. g3 { [%cal Gb7b6,Gf1g2] } 3... b6 4. Bg2 d5 5. Nf3 Bb7 6. O-O (6. cxd5 Nxd5 7. O-O { [%cal Gb8d7] } 7... Nd7 8. Nc3 (8. e4 N5f6 { [%csl Ge4,Gd4] } 9. e5 Nd5) 8... Be7 9. Nxd5 Bxd5) 6... dxc4 { [%cal Gb7h1] } 7. Qa4+ Nbd7 8. Qxc4 c5 { [%cal Ga8c8,Gd4c5,Gf8c5] } 9. Rd1 Rc8 { [%cal Gc5d4] } 10. dxc5 Bxc5 { [%cal Gc5f2] } *

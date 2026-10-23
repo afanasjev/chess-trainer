@@ -1,0 +1,16 @@
+[Event "Французская защита за черных: Глава 1"]
+[Date "2021.01.31"]
+[Result "*"]
+[Variant "Standard"]
+[ECO "C02"]
+[Opening "French Defense: Advance Variation, Paulsen Attack"]
+[StudyName "Французская защита за черных"]
+[ChapterName "Глава 1"]
+[ChapterURL "https://lichess.org/study/VzzCf6Vf/6Vz38E9q"]
+[Annotator "https://lichess.org/@/Egor-Kovalev"]
+[UTCDate "2021.01.31"]
+[UTCTime "16:39:31"]
+
+1. e4 e6 2. d4 (2. Nf3 { [%csl Gd5] } 2... d5 3. exd5 exd5 4. d4 { [%cal Gf8e7,Ge7d6,Gg8f6,Gg8e7,Gc7c6] } 4... Bd6 5. Bd3 { [%cal Gg8f6,Gg8e7] } 5... Ne7 6. O-O O-O 7. Nc3 c6 { [%csl Gc6][%cal Gb7c6,Gc6d5] } 8. Re1 { [%csl Gb7] } 8... Bf5) 2... d5 3. e5 (3. Nc3 { [%csl Gd2,Ge4] } 3... dxe4 4. Nxe4 Nd7 { [%csl Gd7,Gf6][%cal Gg8f6] } 5. Nf3 Ngf6 6. Nxf6+ Nxf6 7. Bd3 b6 8. O-O Bb7 { [%cal Gb7h1] } 9. c3 { [%csl Gd6][%cal Gc1g5,Gf8e7] } 9... Be7 10. Qe2 O-O { [%cal Gd8d5,Gb7g2,Gc7c5] }) 3... c5 { [%csl Gd4,Ge5] } 4. c3 Nc6 5. Nf3 (5. Bb5 Qb6 6. Bxc6+ bxc6 { [%cal Gc8a6,Ga6f1] } 7. Nf3 Ba6 { [%cal Gc5d4,Gc6c5] }) 5... Qb6 { [%csl Gd4,Gb2] } 6. Be2 (6. Bd3 Bd7 { [%cal Gc5d4] } 7. Bc2 { [%cal Gc2h7] } 7... cxd4 8. cxd4 Nb4 { [%cal Gb4c2] } 9. Bb3 Qa6 { [%csl Gd3][%cal Ga6f1] }) 6... Nge7 7. O-O cxd4 8. cxd4 Nf5 { [%csl Gd4,Gb2][%cal Gc1e3] } *
+
+

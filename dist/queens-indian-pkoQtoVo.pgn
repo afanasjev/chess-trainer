@@ -1,0 +1,14 @@
+[Event "Новоиндийская защита: Глава 1"]
+[Date "2021.03.18"]
+[Result "*"]
+[Variant "Standard"]
+[ECO "E12"]
+[Opening "Queen's Indian Defense: Kasparov Variation"]
+[StudyName "Новоиндийская защита"]
+[ChapterName "Глава 1"]
+[ChapterURL "https://lichess.org/study/74hxrQk7/pkoQtoVo"]
+[Annotator "https://lichess.org/@/Egor-Kovalev"]
+[UTCDate "2021.03.18"]
+[UTCTime "14:49:13"]
+
+1. d4 e6 { [%csl Ge6] } 2. c4 Nf6 { [%csl Ge4][%cal Gf6e4] } 3. Nf3 b6 4. Nc3 (4. a3 Bb7 5. Nc3 Be7 6. Qc2 { [%csl Ge4][%cal Gc2e4] } 6... d5 7. cxd5 Nxd5 8. e4 Nxc3 9. bxc3 O-O 10. Bd3 c5 11. O-O Nc6 12. Bb2 Rc8) 4... Bb7 { [%cal Gb7e4] } 5. Bf4 (5. Bg5 { [%cal Gf8b4] } 5... Be7 6. e3 O-O 7. Bd3 d5 8. O-O Nbd7 9. Rc1 c5 { [%cal Gd7c5,Gf6d5,Ga8c8,Gf8d8] } 10. cxd5 Nxd5) 5... Bb4 6. e3 O-O 7. Bd3 Ne4 8. Qc2 f5 { [%cal Gb7h1,Gg7g5,Gh7h5] } *
