@@ -2020,5 +2020,474 @@ window.OPENING_LIBRARY = [
         }
       ]
     ]
+  },
+  {
+    "id": "cbgAvVjL-x6eE8Lg1",
+    "studyId": "cbgAvVjL",
+    "title": "Ферзевый гамбит",
+    "chapter": "Глава 1",
+    "url": "https://lichess.org/study/cbgAvVjL/x6eE8Lg1",
+    "pgn": "queens-gambit-x6eE8Lg1.pgn",
+    "lines": [
+      [
+        {
+          "san": "d4",
+          "from": "d2",
+          "to": "d4"
+        },
+        {
+          "san": "d5",
+          "from": "d7",
+          "to": "d5"
+        },
+        {
+          "san": "c4",
+          "from": "c2",
+          "to": "c4"
+        },
+        {
+          "san": "dxc4",
+          "from": "d5",
+          "to": "c4"
+        },
+        {
+          "san": "e4",
+          "from": "e2",
+          "to": "e4"
+        },
+        {
+          "san": "b5",
+          "from": "b7",
+          "to": "b5"
+        },
+        {
+          "san": "a4",
+          "from": "a2",
+          "to": "a4"
+        },
+        {
+          "san": "c6",
+          "from": "c7",
+          "to": "c6"
+        },
+        {
+          "san": "axb5",
+          "from": "a4",
+          "to": "b5"
+        },
+        {
+          "san": "cxb5",
+          "from": "c6",
+          "to": "b5"
+        },
+        {
+          "san": "Nc3",
+          "from": "b1",
+          "to": "c3"
+        },
+        {
+          "san": "a6",
+          "from": "a7",
+          "to": "a6"
+        },
+        {
+          "san": "Nxb5",
+          "from": "c3",
+          "to": "b5"
+        }
+      ],
+      [
+        {
+          "san": "d4",
+          "from": "d2",
+          "to": "d4"
+        },
+        {
+          "san": "d5",
+          "from": "d7",
+          "to": "d5"
+        },
+        {
+          "san": "c4",
+          "from": "c2",
+          "to": "c4"
+        },
+        {
+          "san": "dxc4",
+          "from": "d5",
+          "to": "c4"
+        },
+        {
+          "san": "e4",
+          "from": "e2",
+          "to": "e4"
+        },
+        {
+          "san": "b5",
+          "from": "b7",
+          "to": "b5"
+        },
+        {
+          "san": "a4",
+          "from": "a2",
+          "to": "a4"
+        },
+        {
+          "san": "c6",
+          "from": "c7",
+          "to": "c6"
+        },
+        {
+          "san": "axb5",
+          "from": "a4",
+          "to": "b5"
+        },
+        {
+          "san": "cxb5",
+          "from": "c6",
+          "to": "b5"
+        },
+        {
+          "san": "Nc3",
+          "from": "b1",
+          "to": "c3"
+        },
+        {
+          "san": "Bd7",
+          "from": "c8",
+          "to": "d7"
+        },
+        {
+          "san": "b3",
+          "from": "b2",
+          "to": "b3"
+        },
+        {
+          "san": "cxb3",
+          "from": "c4",
+          "to": "b3"
+        },
+        {
+          "san": "Qxb3",
+          "from": "d1",
+          "to": "b3"
+        }
+      ],
+      [
+        {
+          "san": "d4",
+          "from": "d2",
+          "to": "d4"
+        },
+        {
+          "san": "d5",
+          "from": "d7",
+          "to": "d5"
+        },
+        {
+          "san": "c4",
+          "from": "c2",
+          "to": "c4"
+        },
+        {
+          "san": "dxc4",
+          "from": "d5",
+          "to": "c4"
+        },
+        {
+          "san": "e4",
+          "from": "e2",
+          "to": "e4"
+        },
+        {
+          "san": "Nc6",
+          "from": "b8",
+          "to": "c6"
+        },
+        {
+          "san": "Nf3",
+          "from": "g1",
+          "to": "f3"
+        },
+        {
+          "san": "Bg4",
+          "from": "c8",
+          "to": "g4"
+        },
+        {
+          "san": "d5",
+          "from": "d4",
+          "to": "d5"
+        },
+        {
+          "san": "Ne5",
+          "from": "c6",
+          "to": "e5"
+        },
+        {
+          "san": "Bf4",
+          "from": "c1",
+          "to": "f4"
+        },
+        {
+          "san": "Nxf3+",
+          "from": "e5",
+          "to": "f3"
+        },
+        {
+          "san": "gxf3",
+          "from": "g2",
+          "to": "f3"
+        },
+        {
+          "san": "Bd7",
+          "from": "g4",
+          "to": "d7"
+        },
+        {
+          "san": "Bxc4",
+          "from": "f1",
+          "to": "c4"
+        }
+      ],
+      [
+        {
+          "san": "d4",
+          "from": "d2",
+          "to": "d4"
+        },
+        {
+          "san": "d5",
+          "from": "d7",
+          "to": "d5"
+        },
+        {
+          "san": "c4",
+          "from": "c2",
+          "to": "c4"
+        },
+        {
+          "san": "dxc4",
+          "from": "d5",
+          "to": "c4"
+        },
+        {
+          "san": "e4",
+          "from": "e2",
+          "to": "e4"
+        },
+        {
+          "san": "Nf6",
+          "from": "g8",
+          "to": "f6"
+        },
+        {
+          "san": "Nc3",
+          "from": "b1",
+          "to": "c3"
+        },
+        {
+          "san": "Nc6",
+          "from": "b8",
+          "to": "c6"
+        },
+        {
+          "san": "Nf3",
+          "from": "g1",
+          "to": "f3"
+        }
+      ]
+    ]
+  },
+  {
+    "id": "cbgAvVjL-xwk4v6c9",
+    "studyId": "cbgAvVjL",
+    "title": "Ферзевый гамбит",
+    "chapter": "Глава 2",
+    "url": "https://lichess.org/study/cbgAvVjL/xwk4v6c9",
+    "pgn": "queens-gambit-xwk4v6c9.pgn",
+    "lines": [
+      [
+        {
+          "san": "d4",
+          "from": "d2",
+          "to": "d4"
+        },
+        {
+          "san": "d5",
+          "from": "d7",
+          "to": "d5"
+        },
+        {
+          "san": "c4",
+          "from": "c2",
+          "to": "c4"
+        },
+        {
+          "san": "e6",
+          "from": "e7",
+          "to": "e6"
+        },
+        {
+          "san": "Nc3",
+          "from": "b1",
+          "to": "c3"
+        },
+        {
+          "san": "Nf6",
+          "from": "g8",
+          "to": "f6"
+        },
+        {
+          "san": "Nf3",
+          "from": "g1",
+          "to": "f3"
+        },
+        {
+          "san": "Be7",
+          "from": "f8",
+          "to": "e7"
+        },
+        {
+          "san": "Bf4",
+          "from": "c1",
+          "to": "f4"
+        },
+        {
+          "san": "O-O",
+          "from": "e8",
+          "to": "g8"
+        },
+        {
+          "san": "e3",
+          "from": "e2",
+          "to": "e3"
+        },
+        {
+          "san": "c6",
+          "from": "c7",
+          "to": "c6"
+        },
+        {
+          "san": "Bd3",
+          "from": "f1",
+          "to": "d3"
+        },
+        {
+          "san": "Nbd7",
+          "from": "b8",
+          "to": "d7"
+        },
+        {
+          "san": "O-O",
+          "from": "e1",
+          "to": "g1"
+        }
+      ],
+      [
+        {
+          "san": "d4",
+          "from": "d2",
+          "to": "d4"
+        },
+        {
+          "san": "d5",
+          "from": "d7",
+          "to": "d5"
+        },
+        {
+          "san": "c4",
+          "from": "c2",
+          "to": "c4"
+        },
+        {
+          "san": "Nf6",
+          "from": "g8",
+          "to": "f6"
+        },
+        {
+          "san": "cxd5",
+          "from": "c4",
+          "to": "d5"
+        },
+        {
+          "san": "Nxd5",
+          "from": "f6",
+          "to": "d5"
+        },
+        {
+          "san": "e4",
+          "from": "e2",
+          "to": "e4"
+        },
+        {
+          "san": "Nf6",
+          "from": "d5",
+          "to": "f6"
+        },
+        {
+          "san": "Nc3",
+          "from": "b1",
+          "to": "c3"
+        }
+      ],
+      [
+        {
+          "san": "d4",
+          "from": "d2",
+          "to": "d4"
+        },
+        {
+          "san": "c5",
+          "from": "c7",
+          "to": "c5"
+        },
+        {
+          "san": "d5",
+          "from": "d4",
+          "to": "d5"
+        },
+        {
+          "san": "e6",
+          "from": "e7",
+          "to": "e6"
+        },
+        {
+          "san": "c4",
+          "from": "c2",
+          "to": "c4"
+        },
+        {
+          "san": "exd5",
+          "from": "e6",
+          "to": "d5"
+        },
+        {
+          "san": "cxd5",
+          "from": "c4",
+          "to": "d5"
+        },
+        {
+          "san": "d6",
+          "from": "d7",
+          "to": "d6"
+        },
+        {
+          "san": "Nc3",
+          "from": "b1",
+          "to": "c3"
+        },
+        {
+          "san": "Nf6",
+          "from": "g8",
+          "to": "f6"
+        },
+        {
+          "san": "e4",
+          "from": "e2",
+          "to": "e4"
+        }
+      ]
+    ]
   }
 ];
