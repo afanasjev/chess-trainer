@@ -1,0 +1,3420 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#121b18"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Дебюты"><title>Дебюты — шахматный тренажёр</title><style>:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#e9eee8;background:#121b18;color-scheme:dark}*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0}main{max-width:1000px;margin:auto;padding:16px max(12px,env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))}h1{font:600 26px Georgia;margin:8px 0 14px}h2{font-size:20px;margin:10px 0}h3{font-size:16px}small,.note{font-size:13px;color:#adbdaf}p{line-height:1.5}a{color:#d7e8ad}button,select,textarea{font:inherit}button,a,summary,select{touch-action:manipulation}button.action{min-height:46px;border:1px solid #526b59;border-radius:10px;padding:11px 13px;color:#edf4eb;background:#253c2d;cursor:pointer}button.primary{background:#d7e8ad;color:#19251c;border-color:#d7e8ad}button[aria-pressed=true]{outline:2px solid #d7e8ad;outline-offset:1px}button:disabled{opacity:.4}button:focus-visible,select:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #f6c766;outline-offset:2px}.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.controls button{flex:1 1 145px}.layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px}.layout>*{min-width:0}.board{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(8,minmax(0,1fr));width:100%;aspect-ratio:1;border:4px solid #304537;border-radius:6px;overflow:hidden;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}.sq{border:0;border-radius:0;padding:0;min-width:0;min-height:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#e6dfcd;color:#101510;font-family:"Apple Symbols","Arial Unicode MS","Segoe UI Symbol",serif;font-variant-emoji:text;font-size:clamp(24px,8.8vw,54px);line-height:1;cursor:pointer}.sq.dark{background:#73917c}.sq.piece-white{color:#fff;text-shadow:0 1px 2px #000,1px 0 #263b30,-1px 0 #263b30}.sq.lastmove{background:#b9b575}.sq.lastmove.dark{background:#8f9e56}.sq.selected{box-shadow:inset 0 0 0 4px #f6c766}.sq:focus-visible{outline:3px solid #f6c766;outline-offset:-4px}.chapter-banner{padding:10px 12px;border-left:3px solid #d7e8ad;background:#253c2d;border-radius:6px;font-size:14px;line-height:1.4;margin:0 0 12px;overflow-wrap:anywhere}.opening-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}.opening-form label{display:grid;gap:7px;min-width:0;font-size:14px}.opening-form label:first-child,.opening-form label:nth-child(3){grid-column:1/-1}select{width:100%;min-width:0;max-width:100%;min-height:46px;background:#253c2d;color:#fff;border:1px solid #526b59;border-radius:8px;padding:10px;font-size:16px}.random-scope{display:grid;gap:8px;margin-top:14px}.settings{margin:0 0 16px;padding:12px;border:1px solid #405846;border-radius:10px;background:#1b2a22}.settings summary{min-height:26px;cursor:pointer;color:#d7e8ad}.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card{padding:12px;border:1px solid #304537;border-radius:10px;background:#1b2a22}.value{display:block;font-size:24px;margin-top:6px}.feedback{min-height:44px;color:#d7e8ad;font-size:15px;line-height:1.5}#openingMoves{overflow-wrap:anywhere;line-height:1.7}#openingSequence,#openingDates{margin:6px 0}#openingHint{font-size:14px;color:#b9c8bd}details:not(.settings){margin:20px 0;border-top:1px solid #405846;padding-top:16px}summary{cursor:pointer;min-height:32px}textarea{width:100%;height:180px;border:1px solid #526b59;border-radius:8px;background:#142219;color:#e9eee8;font-size:16px;padding:10px}.help{line-height:1.6;color:#b9c8bd}@media(max-width:700px){.layout{grid-template-columns:minmax(0,1fr);gap:8px}.layout>div>.note{display:none}#openingHint{margin:8px 0}h1{font-size:24px}.sq{font-size:clamp(24px,8.8vw,54px)}}@media(orientation:landscape) and (max-height:500px) and (min-width:600px){.layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.board{max-width:calc(100svh - 32px);margin:auto}.sq{font-size:clamp(22px,7svh,40px)}}</style></head><body><main><section id="openingsView"><small id="openingLibraryCount">БИБЛИОТЕКА ДЕБЮТОВ</small><h1 id="openingTitle">Дебюты</h1><details class="settings"><summary>Дебют, глава и вариант</summary><p><span id="openingChapterInfo"></span> · из <a id="openingSource" href="https://lichess.org/study/VzzCf6Vf/6Vz38E9q" target="_blank" rel="noopener">студии Lichess</a>. <a id="openingPgn" href="french-defense.pgn" download>Скачать PGN</a></p><div class="opening-form"><label>Студия<select id="openingStudy"></select></label><label>Глава<select id="openingChapter"></select></label><label>Вариант<select id="openingLine"></select></label><label><span id="openingSideLabel">Я играю за</span><select id="openingSide"><option value="b">Чёрных</option><option value="w">Белых</option></select></label></div><label id="openingRandomScopeLabel" class="random-scope" hidden>Перемешивать <select id="openingRandomScope"><option value="chapter">Внутри выбранной главы</option><option value="study">Между всеми главами студии</option></select></label><p class="note" id="openingOrderInfo"></p></details><div class="layout"><div><p id="openingCurrentChapter" class="chapter-banner" aria-live="polite"></p><div class="board" id="openingBoard" aria-label="Доска для тренировки дебюта"></div><p class="note">Нажмите фигуру, затем клетку назначения. Рокировка — ход королём на две клетки. В режиме «За обе стороны» делайте ходы белых и чёрных сами. Ориентация доски остаётся выбранной. Переключение режима начинает текущее прохождение заново.</p></div><aside><p class="note" id="openingSequence"></p><h2 id="openingStatus">Готовы начать?</h2><p id="openingHint">В режиме «Все варианты» пройдите все пять линий по очереди: каждая начинается с исходной позиции. Тренажёр отвечает за соперника. При ошибке попробуйте ещё раз.</p><div class="controls"><button class="action" id="openingRandom" aria-pressed="false" title="Переключение порядка начинает новый проход с исходной позиции">Случайный порядок</button><button class="action" id="openingStudyMode" aria-pressed="false" title="Изучение с начала текущего варианта, без проверки и таймера">Изучение</button><button class="action" id="openingBoth" aria-pressed="false" title="При переключении начатое прохождение начинается заново">За обе стороны</button><button class="action primary" id="openingStart">Начать вариант</button><button class="action" id="openingRepeat" disabled>Повторить вариант</button><button class="action primary" id="openingNext" hidden>Следующий вариант с начала</button><button class="action" id="openingHelp" disabled>Подсказка</button></div><div class="controls" id="openingStepControls" hidden><button class="action" id="openingBack" disabled>← Назад</button><button class="action primary" id="openingForward" disabled>Вперёд →</button></div><div aria-atomic="true" id="openingFeedback" class="feedback opening-feedback" role="status" aria-live="polite"></div><div class="stats"><div class="card"><small>Ваши ходы</small><strong id="openingCount" class="value">0 / 0</strong></div><div class="card"><small>Ошибки</small><strong id="openingErrors" class="value">0</strong></div></div><p class="note" id="openingDates"></p><h3>Сыгранные ходы</h3><div id="openingMoves">—</div></aside></div><details><summary>Результаты и анализ в чате</summary><div class="controls"><button class="action" id="openingCopy">Скопировать для чата</button></div><textarea id="openingExport" readonly aria-label="Результаты тренировки дебютов"></textarea><p class="note">Результаты завершённых попыток сохраняются в этом браузере. После обновления незавершённый вариант начинается заново.</p></details></section><details class="help"><summary>Как пользоваться на iPhone</summary><p>Нажмите фигуру, затем поле назначения. Дебют и главу выбирайте вверху. «Изучение» позволяет листать ходы, «За обе стороны» — разыгрывать их самостоятельно.</p><p>Случайный порядок можно включить внутри главы или между всеми главами выбранной студии. Каждый вариант начинается с исходной позиции.</p><p>Все дебюты уже внутри файла; загрузка данных не нужна. История хранится только в этом браузере. Незавершённый вариант после обновления начинается заново. Результаты можно скопировать для чата.</p><p>Для значка приложения откройте веб-ссылку в Safari и выберите «Поделиться» → «На экран Домой». Приложение с Mac доступно, пока Mac включён и оба устройства находятся в одной сети Wi-Fi.</p></details></main><script>window.exports={};</script><script>'use strict';
+
+// @generated by Peggy 4.2.0.
+//
+// https://peggyjs.org/
+
+
+
+  function rootNode(comment) {
+  	return comment !== null ? { comment, variations: [] } : { variations: []}
+  }
+
+  function node(move, suffix, nag, comment, variations) {
+  	const node = { move, variations };
+
+    if (suffix) {
+    	node.suffix = suffix;
+    }
+
+    if (nag) {
+    	node.nag = nag;
+    }
+
+    if (comment !== null) {
+    	node.comment = comment;
+    }
+
+    return node
+  }
+
+  function lineToTree(...nodes) {
+  	const [root, ...rest] = nodes;
+
+    let parent = root;
+
+    for (const child of rest) {
+    	if (child !== null) {
+        	parent.variations = [child, ...child.variations];
+            child.variations = [];
+            parent = child;
+        }
+    }
+
+  	return root
+  }
+
+  function pgn(headers, game) {
+  	if (game.marker && game.marker.comment) {
+    	let node = game.root;
+        while (true) {
+        	const next = node.variations[0];
+            if (!next) {
+            	node.comment = game.marker.comment;
+            	break
+            }
+            node = next;
+        }
+    }
+
+  	return {
+    	headers,
+        root: game.root,
+        result: (game.marker && game.marker.result) ?? undefined
+    }
+  }
+
+function peg$subclass(child, parent) {
+  function C() { this.constructor = child; }
+  C.prototype = parent.prototype;
+  child.prototype = new C();
+}
+
+function peg$SyntaxError(message, expected, found, location) {
+  var self = Error.call(this, message);
+  // istanbul ignore next Check is a necessary evil to support older environments
+  if (Object.setPrototypeOf) {
+    Object.setPrototypeOf(self, peg$SyntaxError.prototype);
+  }
+  self.expected = expected;
+  self.found = found;
+  self.location = location;
+  self.name = "SyntaxError";
+  return self;
+}
+
+peg$subclass(peg$SyntaxError, Error);
+
+function peg$padEnd(str, targetLength, padString) {
+  padString = padString || " ";
+  if (str.length > targetLength) { return str; }
+  targetLength -= str.length;
+  padString += padString.repeat(targetLength);
+  return str + padString.slice(0, targetLength);
+}
+
+peg$SyntaxError.prototype.format = function(sources) {
+  var str = "Error: " + this.message;
+  if (this.location) {
+    var src = null;
+    var k;
+    for (k = 0; k < sources.length; k++) {
+      if (sources[k].source === this.location.source) {
+        src = sources[k].text.split(/\r\n|\n|\r/g);
+        break;
+      }
+    }
+    var s = this.location.start;
+    var offset_s = (this.location.source && (typeof this.location.source.offset === "function"))
+      ? this.location.source.offset(s)
+      : s;
+    var loc = this.location.source + ":" + offset_s.line + ":" + offset_s.column;
+    if (src) {
+      var e = this.location.end;
+      var filler = peg$padEnd("", offset_s.line.toString().length, ' ');
+      var line = src[s.line - 1];
+      var last = s.line === e.line ? e.column : line.length + 1;
+      var hatLen = (last - s.column) || 1;
+      str += "\n --> " + loc + "\n"
+          + filler + " |\n"
+          + offset_s.line + " | " + line + "\n"
+          + filler + " | " + peg$padEnd("", s.column - 1, ' ')
+          + peg$padEnd("", hatLen, "^");
+    } else {
+      str += "\n at " + loc;
+    }
+  }
+  return str;
+};
+
+peg$SyntaxError.buildMessage = function(expected, found) {
+  var DESCRIBE_EXPECTATION_FNS = {
+    literal: function(expectation) {
+      return "\"" + literalEscape(expectation.text) + "\"";
+    },
+
+    class: function(expectation) {
+      var escapedParts = expectation.parts.map(function(part) {
+        return Array.isArray(part)
+          ? classEscape(part[0]) + "-" + classEscape(part[1])
+          : classEscape(part);
+      });
+
+      return "[" + (expectation.inverted ? "^" : "") + escapedParts.join("") + "]";
+    },
+
+    any: function() {
+      return "any character";
+    },
+
+    end: function() {
+      return "end of input";
+    },
+
+    other: function(expectation) {
+      return expectation.description;
+    }
+  };
+
+  function hex(ch) {
+    return ch.charCodeAt(0).toString(16).toUpperCase();
+  }
+
+  function literalEscape(s) {
+    return s
+      .replace(/\\/g, "\\\\")
+      .replace(/"/g,  "\\\"")
+      .replace(/\0/g, "\\0")
+      .replace(/\t/g, "\\t")
+      .replace(/\n/g, "\\n")
+      .replace(/\r/g, "\\r")
+      .replace(/[\x00-\x0F]/g,          function(ch) { return "\\x0" + hex(ch); })
+      .replace(/[\x10-\x1F\x7F-\x9F]/g, function(ch) { return "\\x"  + hex(ch); });
+  }
+
+  function classEscape(s) {
+    return s
+      .replace(/\\/g, "\\\\")
+      .replace(/\]/g, "\\]")
+      .replace(/\^/g, "\\^")
+      .replace(/-/g,  "\\-")
+      .replace(/\0/g, "\\0")
+      .replace(/\t/g, "\\t")
+      .replace(/\n/g, "\\n")
+      .replace(/\r/g, "\\r")
+      .replace(/[\x00-\x0F]/g,          function(ch) { return "\\x0" + hex(ch); })
+      .replace(/[\x10-\x1F\x7F-\x9F]/g, function(ch) { return "\\x"  + hex(ch); });
+  }
+
+  function describeExpectation(expectation) {
+    return DESCRIBE_EXPECTATION_FNS[expectation.type](expectation);
+  }
+
+  function describeExpected(expected) {
+    var descriptions = expected.map(describeExpectation);
+    var i, j;
+
+    descriptions.sort();
+
+    if (descriptions.length > 0) {
+      for (i = 1, j = 1; i < descriptions.length; i++) {
+        if (descriptions[i - 1] !== descriptions[i]) {
+          descriptions[j] = descriptions[i];
+          j++;
+        }
+      }
+      descriptions.length = j;
+    }
+
+    switch (descriptions.length) {
+      case 1:
+        return descriptions[0];
+
+      case 2:
+        return descriptions[0] + " or " + descriptions[1];
+
+      default:
+        return descriptions.slice(0, -1).join(", ")
+          + ", or "
+          + descriptions[descriptions.length - 1];
+    }
+  }
+
+  function describeFound(found) {
+    return found ? "\"" + literalEscape(found) + "\"" : "end of input";
+  }
+
+  return "Expected " + describeExpected(expected) + " but " + describeFound(found) + " found.";
+};
+
+function peg$parse(input, options) {
+  options = options !== undefined ? options : {};
+
+  var peg$FAILED = {};
+  var peg$source = options.grammarSource;
+
+  var peg$startRuleFunctions = { pgn: peg$parsepgn };
+  var peg$startRuleFunction = peg$parsepgn;
+
+  var peg$c0 = "[";
+  var peg$c1 = "\"";
+  var peg$c2 = "]";
+  var peg$c3 = ".";
+  var peg$c4 = "O-O-O";
+  var peg$c5 = "O-O";
+  var peg$c6 = "0-0-0";
+  var peg$c7 = "0-0";
+  var peg$c8 = "$";
+  var peg$c9 = "{";
+  var peg$c10 = "}";
+  var peg$c11 = ";";
+  var peg$c12 = "(";
+  var peg$c13 = ")";
+  var peg$c14 = "1-0";
+  var peg$c15 = "0-1";
+  var peg$c16 = "1/2-1/2";
+  var peg$c17 = "*";
+
+  var peg$r0 = /^[a-zA-Z]/;
+  var peg$r1 = /^[^"]/;
+  var peg$r2 = /^[0-9]/;
+  var peg$r3 = /^[.]/;
+  var peg$r4 = /^[a-zA-Z1-8\-=]/;
+  var peg$r5 = /^[+#]/;
+  var peg$r6 = /^[!?]/;
+  var peg$r7 = /^[^}]/;
+  var peg$r8 = /^[^\r\n]/;
+  var peg$r9 = /^[ \t\r\n]/;
+
+  var peg$e0 = peg$otherExpectation("tag pair");
+  var peg$e1 = peg$literalExpectation("[", false);
+  var peg$e2 = peg$literalExpectation("\"", false);
+  var peg$e3 = peg$literalExpectation("]", false);
+  var peg$e4 = peg$otherExpectation("tag name");
+  var peg$e5 = peg$classExpectation([["a", "z"], ["A", "Z"]], false, false);
+  var peg$e6 = peg$otherExpectation("tag value");
+  var peg$e7 = peg$classExpectation(["\""], true, false);
+  var peg$e8 = peg$otherExpectation("move number");
+  var peg$e9 = peg$classExpectation([["0", "9"]], false, false);
+  var peg$e10 = peg$literalExpectation(".", false);
+  var peg$e11 = peg$classExpectation(["."], false, false);
+  var peg$e12 = peg$otherExpectation("standard algebraic notation");
+  var peg$e13 = peg$literalExpectation("O-O-O", false);
+  var peg$e14 = peg$literalExpectation("O-O", false);
+  var peg$e15 = peg$literalExpectation("0-0-0", false);
+  var peg$e16 = peg$literalExpectation("0-0", false);
+  var peg$e17 = peg$classExpectation([["a", "z"], ["A", "Z"], ["1", "8"], "-", "="], false, false);
+  var peg$e18 = peg$classExpectation(["+", "#"], false, false);
+  var peg$e19 = peg$otherExpectation("suffix annotation");
+  var peg$e20 = peg$classExpectation(["!", "?"], false, false);
+  var peg$e21 = peg$otherExpectation("NAG");
+  var peg$e22 = peg$literalExpectation("$", false);
+  var peg$e23 = peg$otherExpectation("brace comment");
+  var peg$e24 = peg$literalExpectation("{", false);
+  var peg$e25 = peg$classExpectation(["}"], true, false);
+  var peg$e26 = peg$literalExpectation("}", false);
+  var peg$e27 = peg$otherExpectation("rest of line comment");
+  var peg$e28 = peg$literalExpectation(";", false);
+  var peg$e29 = peg$classExpectation(["\r", "\n"], true, false);
+  var peg$e30 = peg$otherExpectation("variation");
+  var peg$e31 = peg$literalExpectation("(", false);
+  var peg$e32 = peg$literalExpectation(")", false);
+  var peg$e33 = peg$otherExpectation("game termination marker");
+  var peg$e34 = peg$literalExpectation("1-0", false);
+  var peg$e35 = peg$literalExpectation("0-1", false);
+  var peg$e36 = peg$literalExpectation("1/2-1/2", false);
+  var peg$e37 = peg$literalExpectation("*", false);
+  var peg$e38 = peg$otherExpectation("whitespace");
+  var peg$e39 = peg$classExpectation([" ", "\t", "\r", "\n"], false, false);
+
+  var peg$f0 = function(headers, game) { return pgn(headers, game) };
+  var peg$f1 = function(tagPairs) { return Object.fromEntries(tagPairs) };
+  var peg$f2 = function(tagName, tagValue) { return [tagName, tagValue] };
+  var peg$f3 = function(root, marker) { return { root, marker} };
+  var peg$f4 = function(comment, moves) { return lineToTree(rootNode(comment), ...moves.flat()) };
+  var peg$f5 = function(san, suffix, nag, comment, variations) { return node(san, suffix, nag, comment, variations) };
+  var peg$f6 = function(nag) { return nag };
+  var peg$f7 = function(comment) { return comment.replace(/[\r\n]+/g, " ") };
+  var peg$f8 = function(comment) { return comment.trim() };
+  var peg$f9 = function(line) { return line };
+  var peg$f10 = function(result, comment) { return { result, comment } };
+  var peg$currPos = options.peg$currPos | 0;
+  var peg$posDetailsCache = [{ line: 1, column: 1 }];
+  var peg$maxFailPos = peg$currPos;
+  var peg$maxFailExpected = options.peg$maxFailExpected || [];
+  var peg$silentFails = options.peg$silentFails | 0;
+
+  var peg$result;
+
+  if (options.startRule) {
+    if (!(options.startRule in peg$startRuleFunctions)) {
+      throw new Error("Can't start parsing from rule \"" + options.startRule + "\".");
+    }
+
+    peg$startRuleFunction = peg$startRuleFunctions[options.startRule];
+  }
+
+  function peg$literalExpectation(text, ignoreCase) {
+    return { type: "literal", text: text, ignoreCase: ignoreCase };
+  }
+
+  function peg$classExpectation(parts, inverted, ignoreCase) {
+    return { type: "class", parts: parts, inverted: inverted, ignoreCase: ignoreCase };
+  }
+
+  function peg$endExpectation() {
+    return { type: "end" };
+  }
+
+  function peg$otherExpectation(description) {
+    return { type: "other", description: description };
+  }
+
+  function peg$computePosDetails(pos) {
+    var details = peg$posDetailsCache[pos];
+    var p;
+
+    if (details) {
+      return details;
+    } else {
+      if (pos >= peg$posDetailsCache.length) {
+        p = peg$posDetailsCache.length - 1;
+      } else {
+        p = pos;
+        while (!peg$posDetailsCache[--p]) {}
+      }
+
+      details = peg$posDetailsCache[p];
+      details = {
+        line: details.line,
+        column: details.column
+      };
+
+      while (p < pos) {
+        if (input.charCodeAt(p) === 10) {
+          details.line++;
+          details.column = 1;
+        } else {
+          details.column++;
+        }
+
+        p++;
+      }
+
+      peg$posDetailsCache[pos] = details;
+
+      return details;
+    }
+  }
+
+  function peg$computeLocation(startPos, endPos, offset) {
+    var startPosDetails = peg$computePosDetails(startPos);
+    var endPosDetails = peg$computePosDetails(endPos);
+
+    var res = {
+      source: peg$source,
+      start: {
+        offset: startPos,
+        line: startPosDetails.line,
+        column: startPosDetails.column
+      },
+      end: {
+        offset: endPos,
+        line: endPosDetails.line,
+        column: endPosDetails.column
+      }
+    };
+    return res;
+  }
+
+  function peg$fail(expected) {
+    if (peg$currPos < peg$maxFailPos) { return; }
+
+    if (peg$currPos > peg$maxFailPos) {
+      peg$maxFailPos = peg$currPos;
+      peg$maxFailExpected = [];
+    }
+
+    peg$maxFailExpected.push(expected);
+  }
+
+  function peg$buildStructuredError(expected, found, location) {
+    return new peg$SyntaxError(
+      peg$SyntaxError.buildMessage(expected, found),
+      expected,
+      found,
+      location
+    );
+  }
+
+  function peg$parsepgn() {
+    var s0, s1, s2;
+
+    s0 = peg$currPos;
+    s1 = peg$parsetagPairSection();
+    s2 = peg$parsemoveTextSection();
+    s0 = peg$f0(s1, s2);
+
+    return s0;
+  }
+
+  function peg$parsetagPairSection() {
+    var s0, s1, s2;
+
+    s0 = peg$currPos;
+    s1 = [];
+    s2 = peg$parsetagPair();
+    while (s2 !== peg$FAILED) {
+      s1.push(s2);
+      s2 = peg$parsetagPair();
+    }
+    s2 = peg$parse_();
+    s0 = peg$f1(s1);
+
+    return s0;
+  }
+
+  function peg$parsetagPair() {
+    var s0, s2, s4, s6, s7, s8, s10;
+
+    peg$silentFails++;
+    s0 = peg$currPos;
+    peg$parse_();
+    if (input.charCodeAt(peg$currPos) === 91) {
+      s2 = peg$c0;
+      peg$currPos++;
+    } else {
+      s2 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e1); }
+    }
+    if (s2 !== peg$FAILED) {
+      peg$parse_();
+      s4 = peg$parsetagName();
+      if (s4 !== peg$FAILED) {
+        peg$parse_();
+        if (input.charCodeAt(peg$currPos) === 34) {
+          s6 = peg$c1;
+          peg$currPos++;
+        } else {
+          s6 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$e2); }
+        }
+        if (s6 !== peg$FAILED) {
+          s7 = peg$parsetagValue();
+          if (input.charCodeAt(peg$currPos) === 34) {
+            s8 = peg$c1;
+            peg$currPos++;
+          } else {
+            s8 = peg$FAILED;
+            if (peg$silentFails === 0) { peg$fail(peg$e2); }
+          }
+          if (s8 !== peg$FAILED) {
+            peg$parse_();
+            if (input.charCodeAt(peg$currPos) === 93) {
+              s10 = peg$c2;
+              peg$currPos++;
+            } else {
+              s10 = peg$FAILED;
+              if (peg$silentFails === 0) { peg$fail(peg$e3); }
+            }
+            if (s10 !== peg$FAILED) {
+              s0 = peg$f2(s4, s7);
+            } else {
+              peg$currPos = s0;
+              s0 = peg$FAILED;
+            }
+          } else {
+            peg$currPos = s0;
+            s0 = peg$FAILED;
+          }
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      if (peg$silentFails === 0) { peg$fail(peg$e0); }
+    }
+
+    return s0;
+  }
+
+  function peg$parsetagName() {
+    var s0, s1, s2;
+
+    peg$silentFails++;
+    s0 = peg$currPos;
+    s1 = [];
+    s2 = input.charAt(peg$currPos);
+    if (peg$r0.test(s2)) {
+      peg$currPos++;
+    } else {
+      s2 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e5); }
+    }
+    if (s2 !== peg$FAILED) {
+      while (s2 !== peg$FAILED) {
+        s1.push(s2);
+        s2 = input.charAt(peg$currPos);
+        if (peg$r0.test(s2)) {
+          peg$currPos++;
+        } else {
+          s2 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$e5); }
+        }
+      }
+    } else {
+      s1 = peg$FAILED;
+    }
+    if (s1 !== peg$FAILED) {
+      s0 = input.substring(s0, peg$currPos);
+    } else {
+      s0 = s1;
+    }
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e4); }
+    }
+
+    return s0;
+  }
+
+  function peg$parsetagValue() {
+    var s0, s1, s2;
+
+    peg$silentFails++;
+    s0 = peg$currPos;
+    s1 = [];
+    s2 = input.charAt(peg$currPos);
+    if (peg$r1.test(s2)) {
+      peg$currPos++;
+    } else {
+      s2 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e7); }
+    }
+    while (s2 !== peg$FAILED) {
+      s1.push(s2);
+      s2 = input.charAt(peg$currPos);
+      if (peg$r1.test(s2)) {
+        peg$currPos++;
+      } else {
+        s2 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$e7); }
+      }
+    }
+    s0 = input.substring(s0, peg$currPos);
+    peg$silentFails--;
+    s1 = peg$FAILED;
+    if (peg$silentFails === 0) { peg$fail(peg$e6); }
+
+    return s0;
+  }
+
+  function peg$parsemoveTextSection() {
+    var s0, s1, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parseline();
+    peg$parse_();
+    s3 = peg$parsegameTerminationMarker();
+    if (s3 === peg$FAILED) {
+      s3 = null;
+    }
+    peg$parse_();
+    s0 = peg$f3(s1, s3);
+
+    return s0;
+  }
+
+  function peg$parseline() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parsecomment();
+    if (s1 === peg$FAILED) {
+      s1 = null;
+    }
+    s2 = [];
+    s3 = peg$parsemove();
+    while (s3 !== peg$FAILED) {
+      s2.push(s3);
+      s3 = peg$parsemove();
+    }
+    s0 = peg$f4(s1, s2);
+
+    return s0;
+  }
+
+  function peg$parsemove() {
+    var s0, s4, s5, s6, s7, s8, s9, s10;
+
+    s0 = peg$currPos;
+    peg$parse_();
+    peg$parsemoveNumber();
+    peg$parse_();
+    s4 = peg$parsesan();
+    if (s4 !== peg$FAILED) {
+      s5 = peg$parsesuffixAnnotation();
+      if (s5 === peg$FAILED) {
+        s5 = null;
+      }
+      s6 = [];
+      s7 = peg$parsenag();
+      while (s7 !== peg$FAILED) {
+        s6.push(s7);
+        s7 = peg$parsenag();
+      }
+      s7 = peg$parse_();
+      s8 = peg$parsecomment();
+      if (s8 === peg$FAILED) {
+        s8 = null;
+      }
+      s9 = [];
+      s10 = peg$parsevariation();
+      while (s10 !== peg$FAILED) {
+        s9.push(s10);
+        s10 = peg$parsevariation();
+      }
+      s0 = peg$f5(s4, s5, s6, s8, s9);
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsemoveNumber() {
+    var s0, s1, s2, s3, s4, s5;
+
+    peg$silentFails++;
+    s0 = peg$currPos;
+    s1 = [];
+    s2 = input.charAt(peg$currPos);
+    if (peg$r2.test(s2)) {
+      peg$currPos++;
+    } else {
+      s2 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e9); }
+    }
+    while (s2 !== peg$FAILED) {
+      s1.push(s2);
+      s2 = input.charAt(peg$currPos);
+      if (peg$r2.test(s2)) {
+        peg$currPos++;
+      } else {
+        s2 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$e9); }
+      }
+    }
+    if (input.charCodeAt(peg$currPos) === 46) {
+      s2 = peg$c3;
+      peg$currPos++;
+    } else {
+      s2 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e10); }
+    }
+    if (s2 !== peg$FAILED) {
+      s3 = peg$parse_();
+      s4 = [];
+      s5 = input.charAt(peg$currPos);
+      if (peg$r3.test(s5)) {
+        peg$currPos++;
+      } else {
+        s5 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$e11); }
+      }
+      while (s5 !== peg$FAILED) {
+        s4.push(s5);
+        s5 = input.charAt(peg$currPos);
+        if (peg$r3.test(s5)) {
+          peg$currPos++;
+        } else {
+          s5 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$e11); }
+        }
+      }
+      s1 = [s1, s2, s3, s4];
+      s0 = s1;
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e8); }
+    }
+
+    return s0;
+  }
+
+  function peg$parsesan() {
+    var s0, s1, s2, s3, s4, s5;
+
+    peg$silentFails++;
+    s0 = peg$currPos;
+    s1 = peg$currPos;
+    if (input.substr(peg$currPos, 5) === peg$c4) {
+      s2 = peg$c4;
+      peg$currPos += 5;
+    } else {
+      s2 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e13); }
+    }
+    if (s2 === peg$FAILED) {
+      if (input.substr(peg$currPos, 3) === peg$c5) {
+        s2 = peg$c5;
+        peg$currPos += 3;
+      } else {
+        s2 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$e14); }
+      }
+      if (s2 === peg$FAILED) {
+        if (input.substr(peg$currPos, 5) === peg$c6) {
+          s2 = peg$c6;
+          peg$currPos += 5;
+        } else {
+          s2 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$e15); }
+        }
+        if (s2 === peg$FAILED) {
+          if (input.substr(peg$currPos, 3) === peg$c7) {
+            s2 = peg$c7;
+            peg$currPos += 3;
+          } else {
+            s2 = peg$FAILED;
+            if (peg$silentFails === 0) { peg$fail(peg$e16); }
+          }
+          if (s2 === peg$FAILED) {
+            s2 = peg$currPos;
+            s3 = input.charAt(peg$currPos);
+            if (peg$r0.test(s3)) {
+              peg$currPos++;
+            } else {
+              s3 = peg$FAILED;
+              if (peg$silentFails === 0) { peg$fail(peg$e5); }
+            }
+            if (s3 !== peg$FAILED) {
+              s4 = [];
+              s5 = input.charAt(peg$currPos);
+              if (peg$r4.test(s5)) {
+                peg$currPos++;
+              } else {
+                s5 = peg$FAILED;
+                if (peg$silentFails === 0) { peg$fail(peg$e17); }
+              }
+              if (s5 !== peg$FAILED) {
+                while (s5 !== peg$FAILED) {
+                  s4.push(s5);
+                  s5 = input.charAt(peg$currPos);
+                  if (peg$r4.test(s5)) {
+                    peg$currPos++;
+                  } else {
+                    s5 = peg$FAILED;
+                    if (peg$silentFails === 0) { peg$fail(peg$e17); }
+                  }
+                }
+              } else {
+                s4 = peg$FAILED;
+              }
+              if (s4 !== peg$FAILED) {
+                s3 = [s3, s4];
+                s2 = s3;
+              } else {
+                peg$currPos = s2;
+                s2 = peg$FAILED;
+              }
+            } else {
+              peg$currPos = s2;
+              s2 = peg$FAILED;
+            }
+          }
+        }
+      }
+    }
+    if (s2 !== peg$FAILED) {
+      s3 = input.charAt(peg$currPos);
+      if (peg$r5.test(s3)) {
+        peg$currPos++;
+      } else {
+        s3 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$e18); }
+      }
+      if (s3 === peg$FAILED) {
+        s3 = null;
+      }
+      s2 = [s2, s3];
+      s1 = s2;
+    } else {
+      peg$currPos = s1;
+      s1 = peg$FAILED;
+    }
+    if (s1 !== peg$FAILED) {
+      s0 = input.substring(s0, peg$currPos);
+    } else {
+      s0 = s1;
+    }
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e12); }
+    }
+
+    return s0;
+  }
+
+  function peg$parsesuffixAnnotation() {
+    var s0, s1, s2;
+
+    peg$silentFails++;
+    s0 = peg$currPos;
+    s1 = [];
+    s2 = input.charAt(peg$currPos);
+    if (peg$r6.test(s2)) {
+      peg$currPos++;
+    } else {
+      s2 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e20); }
+    }
+    while (s2 !== peg$FAILED) {
+      s1.push(s2);
+      if (s1.length >= 2) {
+        s2 = peg$FAILED;
+      } else {
+        s2 = input.charAt(peg$currPos);
+        if (peg$r6.test(s2)) {
+          peg$currPos++;
+        } else {
+          s2 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$e20); }
+        }
+      }
+    }
+    if (s1.length < 1) {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    } else {
+      s0 = s1;
+    }
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e19); }
+    }
+
+    return s0;
+  }
+
+  function peg$parsenag() {
+    var s0, s2, s3, s4, s5;
+
+    peg$silentFails++;
+    s0 = peg$currPos;
+    peg$parse_();
+    if (input.charCodeAt(peg$currPos) === 36) {
+      s2 = peg$c8;
+      peg$currPos++;
+    } else {
+      s2 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e22); }
+    }
+    if (s2 !== peg$FAILED) {
+      s3 = peg$currPos;
+      s4 = [];
+      s5 = input.charAt(peg$currPos);
+      if (peg$r2.test(s5)) {
+        peg$currPos++;
+      } else {
+        s5 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$e9); }
+      }
+      if (s5 !== peg$FAILED) {
+        while (s5 !== peg$FAILED) {
+          s4.push(s5);
+          s5 = input.charAt(peg$currPos);
+          if (peg$r2.test(s5)) {
+            peg$currPos++;
+          } else {
+            s5 = peg$FAILED;
+            if (peg$silentFails === 0) { peg$fail(peg$e9); }
+          }
+        }
+      } else {
+        s4 = peg$FAILED;
+      }
+      if (s4 !== peg$FAILED) {
+        s3 = input.substring(s3, peg$currPos);
+      } else {
+        s3 = s4;
+      }
+      if (s3 !== peg$FAILED) {
+        s0 = peg$f6(s3);
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      if (peg$silentFails === 0) { peg$fail(peg$e21); }
+    }
+
+    return s0;
+  }
+
+  function peg$parsecomment() {
+    var s0;
+
+    s0 = peg$parsebraceComment();
+    if (s0 === peg$FAILED) {
+      s0 = peg$parserestOfLineComment();
+    }
+
+    return s0;
+  }
+
+  function peg$parsebraceComment() {
+    var s0, s1, s2, s3, s4;
+
+    peg$silentFails++;
+    s0 = peg$currPos;
+    if (input.charCodeAt(peg$currPos) === 123) {
+      s1 = peg$c9;
+      peg$currPos++;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e24); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      s3 = [];
+      s4 = input.charAt(peg$currPos);
+      if (peg$r7.test(s4)) {
+        peg$currPos++;
+      } else {
+        s4 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$e25); }
+      }
+      while (s4 !== peg$FAILED) {
+        s3.push(s4);
+        s4 = input.charAt(peg$currPos);
+        if (peg$r7.test(s4)) {
+          peg$currPos++;
+        } else {
+          s4 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$e25); }
+        }
+      }
+      s2 = input.substring(s2, peg$currPos);
+      if (input.charCodeAt(peg$currPos) === 125) {
+        s3 = peg$c10;
+        peg$currPos++;
+      } else {
+        s3 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$e26); }
+      }
+      if (s3 !== peg$FAILED) {
+        s0 = peg$f7(s2);
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e23); }
+    }
+
+    return s0;
+  }
+
+  function peg$parserestOfLineComment() {
+    var s0, s1, s2, s3, s4;
+
+    peg$silentFails++;
+    s0 = peg$currPos;
+    if (input.charCodeAt(peg$currPos) === 59) {
+      s1 = peg$c11;
+      peg$currPos++;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e28); }
+    }
+    if (s1 !== peg$FAILED) {
+      s2 = peg$currPos;
+      s3 = [];
+      s4 = input.charAt(peg$currPos);
+      if (peg$r8.test(s4)) {
+        peg$currPos++;
+      } else {
+        s4 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$e29); }
+      }
+      while (s4 !== peg$FAILED) {
+        s3.push(s4);
+        s4 = input.charAt(peg$currPos);
+        if (peg$r8.test(s4)) {
+          peg$currPos++;
+        } else {
+          s4 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$e29); }
+        }
+      }
+      s2 = input.substring(s2, peg$currPos);
+      s0 = peg$f8(s2);
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e27); }
+    }
+
+    return s0;
+  }
+
+  function peg$parsevariation() {
+    var s0, s2, s3, s5;
+
+    peg$silentFails++;
+    s0 = peg$currPos;
+    peg$parse_();
+    if (input.charCodeAt(peg$currPos) === 40) {
+      s2 = peg$c12;
+      peg$currPos++;
+    } else {
+      s2 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e31); }
+    }
+    if (s2 !== peg$FAILED) {
+      s3 = peg$parseline();
+      if (s3 !== peg$FAILED) {
+        peg$parse_();
+        if (input.charCodeAt(peg$currPos) === 41) {
+          s5 = peg$c13;
+          peg$currPos++;
+        } else {
+          s5 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$e32); }
+        }
+        if (s5 !== peg$FAILED) {
+          s0 = peg$f9(s3);
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      if (peg$silentFails === 0) { peg$fail(peg$e30); }
+    }
+
+    return s0;
+  }
+
+  function peg$parsegameTerminationMarker() {
+    var s0, s1, s3;
+
+    peg$silentFails++;
+    s0 = peg$currPos;
+    if (input.substr(peg$currPos, 3) === peg$c14) {
+      s1 = peg$c14;
+      peg$currPos += 3;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e34); }
+    }
+    if (s1 === peg$FAILED) {
+      if (input.substr(peg$currPos, 3) === peg$c15) {
+        s1 = peg$c15;
+        peg$currPos += 3;
+      } else {
+        s1 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$e35); }
+      }
+      if (s1 === peg$FAILED) {
+        if (input.substr(peg$currPos, 7) === peg$c16) {
+          s1 = peg$c16;
+          peg$currPos += 7;
+        } else {
+          s1 = peg$FAILED;
+          if (peg$silentFails === 0) { peg$fail(peg$e36); }
+        }
+        if (s1 === peg$FAILED) {
+          if (input.charCodeAt(peg$currPos) === 42) {
+            s1 = peg$c17;
+            peg$currPos++;
+          } else {
+            s1 = peg$FAILED;
+            if (peg$silentFails === 0) { peg$fail(peg$e37); }
+          }
+        }
+      }
+    }
+    if (s1 !== peg$FAILED) {
+      peg$parse_();
+      s3 = peg$parsecomment();
+      if (s3 === peg$FAILED) {
+        s3 = null;
+      }
+      s0 = peg$f10(s1, s3);
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+    peg$silentFails--;
+    if (s0 === peg$FAILED) {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e33); }
+    }
+
+    return s0;
+  }
+
+  function peg$parse_() {
+    var s0, s1;
+
+    peg$silentFails++;
+    s0 = [];
+    s1 = input.charAt(peg$currPos);
+    if (peg$r9.test(s1)) {
+      peg$currPos++;
+    } else {
+      s1 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$e39); }
+    }
+    while (s1 !== peg$FAILED) {
+      s0.push(s1);
+      s1 = input.charAt(peg$currPos);
+      if (peg$r9.test(s1)) {
+        peg$currPos++;
+      } else {
+        s1 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$e39); }
+      }
+    }
+    peg$silentFails--;
+    s1 = peg$FAILED;
+    if (peg$silentFails === 0) { peg$fail(peg$e38); }
+
+    return s0;
+  }
+
+  peg$result = peg$startRuleFunction();
+
+  if (options.peg$library) {
+    return /** @type {any} */ ({
+      peg$result,
+      peg$currPos,
+      peg$FAILED,
+      peg$maxFailExpected,
+      peg$maxFailPos
+    });
+  }
+  if (peg$result !== peg$FAILED && peg$currPos === input.length) {
+    return peg$result;
+  } else {
+    if (peg$result !== peg$FAILED && peg$currPos < input.length) {
+      peg$fail(peg$endExpectation());
+    }
+
+    throw peg$buildStructuredError(
+      peg$maxFailExpected,
+      peg$maxFailPos < input.length ? input.charAt(peg$maxFailPos) : null,
+      peg$maxFailPos < input.length
+        ? peg$computeLocation(peg$maxFailPos, peg$maxFailPos + 1)
+        : peg$computeLocation(peg$maxFailPos, peg$maxFailPos)
+    );
+  }
+}
+
+/**
+ * @license
+ * Copyright (c) 2025, Jeff Hlywa (jhlywa@gmail.com)
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+const MASK64 = 0xffffffffffffffffn;
+function rotl(x, k) {
+    return ((x << k) | (x >> (64n - k))) & 0xffffffffffffffffn;
+}
+function wrappingMul(x, y) {
+    return (x * y) & MASK64;
+}
+// xoroshiro128**
+function xoroshiro128(state) {
+    return function () {
+        let s0 = BigInt(state & MASK64);
+        let s1 = BigInt((state >> 64n) & MASK64);
+        const result = wrappingMul(rotl(wrappingMul(s0, 5n), 7n), 9n);
+        s1 ^= s0;
+        s0 = (rotl(s0, 24n) ^ s1 ^ (s1 << 16n)) & MASK64;
+        s1 = rotl(s1, 37n);
+        state = (s1 << 64n) | s0;
+        return result;
+    };
+}
+const rand = xoroshiro128(0xa187eb39cdcaed8f31c4b365b102e01en);
+const PIECE_KEYS = Array.from({ length: 2 }, () => Array.from({ length: 6 }, () => Array.from({ length: 128 }, () => rand())));
+const EP_KEYS = Array.from({ length: 8 }, () => rand());
+const CASTLING_KEYS = Array.from({ length: 16 }, () => rand());
+const SIDE_KEY = rand();
+const WHITE = 'w';
+const BLACK = 'b';
+const PAWN = 'p';
+const KNIGHT = 'n';
+const BISHOP = 'b';
+const ROOK = 'r';
+const QUEEN = 'q';
+const KING = 'k';
+const DEFAULT_POSITION = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
+class Move {
+    color;
+    from;
+    to;
+    piece;
+    captured;
+    promotion;
+    /**
+     * @deprecated This field is deprecated and will be removed in version 2.0.0.
+     * Please use move descriptor functions instead: `isCapture`, `isPromotion`,
+     * `isEnPassant`, `isKingsideCastle`, `isQueensideCastle`, `isCastle`, and
+     * `isBigPawn`
+     */
+    flags;
+    san;
+    lan;
+    before;
+    after;
+    constructor(chess, internal) {
+        const { color, piece, from, to, flags, captured, promotion } = internal;
+        const fromAlgebraic = algebraic(from);
+        const toAlgebraic = algebraic(to);
+        this.color = color;
+        this.piece = piece;
+        this.from = fromAlgebraic;
+        this.to = toAlgebraic;
+        /*
+         * HACK: The chess['_method']() calls below invoke private methods in the
+         * Chess class to generate SAN and FEN. It's a bit of a hack, but makes the
+         * code cleaner elsewhere.
+         */
+        this.san = chess['_moveToSan'](internal, chess['_moves']({ legal: true }));
+        this.lan = fromAlgebraic + toAlgebraic;
+        this.before = chess.fen();
+        // Generate the FEN for the 'after' key
+        chess['_makeMove'](internal);
+        this.after = chess.fen();
+        chess['_undoMove']();
+        // Build the text representation of the move flags
+        this.flags = '';
+        for (const flag in BITS) {
+            if (BITS[flag] & flags) {
+                this.flags += FLAGS[flag];
+            }
+        }
+        if (captured) {
+            this.captured = captured;
+        }
+        if (promotion) {
+            this.promotion = promotion;
+            this.lan += promotion;
+        }
+    }
+    isCapture() {
+        return this.flags.indexOf(FLAGS['CAPTURE']) > -1;
+    }
+    isPromotion() {
+        return this.flags.indexOf(FLAGS['PROMOTION']) > -1;
+    }
+    isEnPassant() {
+        return this.flags.indexOf(FLAGS['EP_CAPTURE']) > -1;
+    }
+    isKingsideCastle() {
+        return this.flags.indexOf(FLAGS['KSIDE_CASTLE']) > -1;
+    }
+    isQueensideCastle() {
+        return this.flags.indexOf(FLAGS['QSIDE_CASTLE']) > -1;
+    }
+    isBigPawn() {
+        return this.flags.indexOf(FLAGS['BIG_PAWN']) > -1;
+    }
+}
+const EMPTY = -1;
+const FLAGS = {
+    NORMAL: 'n',
+    CAPTURE: 'c',
+    BIG_PAWN: 'b',
+    EP_CAPTURE: 'e',
+    PROMOTION: 'p',
+    KSIDE_CASTLE: 'k',
+    QSIDE_CASTLE: 'q',
+    NULL_MOVE: '-',
+};
+// prettier-ignore
+const SQUARES = [
+    'a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8',
+    'a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7',
+    'a6', 'b6', 'c6', 'd6', 'e6', 'f6', 'g6', 'h6',
+    'a5', 'b5', 'c5', 'd5', 'e5', 'f5', 'g5', 'h5',
+    'a4', 'b4', 'c4', 'd4', 'e4', 'f4', 'g4', 'h4',
+    'a3', 'b3', 'c3', 'd3', 'e3', 'f3', 'g3', 'h3',
+    'a2', 'b2', 'c2', 'd2', 'e2', 'f2', 'g2', 'h2',
+    'a1', 'b1', 'c1', 'd1', 'e1', 'f1', 'g1', 'h1'
+];
+const BITS = {
+    NORMAL: 1,
+    CAPTURE: 2,
+    BIG_PAWN: 4,
+    EP_CAPTURE: 8,
+    PROMOTION: 16,
+    KSIDE_CASTLE: 32,
+    QSIDE_CASTLE: 64,
+    NULL_MOVE: 128,
+};
+/* eslint-disable @typescript-eslint/naming-convention */
+// these are required, according to spec
+const SEVEN_TAG_ROSTER = {
+    Event: '?',
+    Site: '?',
+    Date: '????.??.??',
+    Round: '?',
+    White: '?',
+    Black: '?',
+    Result: '*',
+};
+/**
+ * These nulls are placeholders to fix the order of tags (as they appear in PGN spec); null values will be
+ * eliminated in getHeaders()
+ */
+const SUPLEMENTAL_TAGS = {
+    WhiteTitle: null,
+    BlackTitle: null,
+    WhiteElo: null,
+    BlackElo: null,
+    WhiteUSCF: null,
+    BlackUSCF: null,
+    WhiteNA: null,
+    BlackNA: null,
+    WhiteType: null,
+    BlackType: null,
+    EventDate: null,
+    EventSponsor: null,
+    Section: null,
+    Stage: null,
+    Board: null,
+    Opening: null,
+    Variation: null,
+    SubVariation: null,
+    ECO: null,
+    NIC: null,
+    Time: null,
+    UTCTime: null,
+    UTCDate: null,
+    TimeControl: null,
+    SetUp: null,
+    FEN: null,
+    Termination: null,
+    Annotator: null,
+    Mode: null,
+    PlyCount: null,
+};
+const HEADER_TEMPLATE = {
+    ...SEVEN_TAG_ROSTER,
+    ...SUPLEMENTAL_TAGS,
+};
+/* eslint-enable @typescript-eslint/naming-convention */
+/*
+ * NOTES ABOUT 0x88 MOVE GENERATION ALGORITHM
+ * ----------------------------------------------------------------------------
+ * From https://github.com/jhlywa/chess.js/issues/230
+ *
+ * A lot of people are confused when they first see the internal representation
+ * of chess.js. It uses the 0x88 Move Generation Algorithm which internally
+ * stores the board as an 8x16 array. This is purely for efficiency but has a
+ * couple of interesting benefits:
+ *
+ * 1. 0x88 offers a very inexpensive "off the board" check. Bitwise AND (&) any
+ *    square with 0x88, if the result is non-zero then the square is off the
+ *    board. For example, assuming a knight square A8 (0 in 0x88 notation),
+ *    there are 8 possible directions in which the knight can move. These
+ *    directions are relative to the 8x16 board and are stored in the
+ *    PIECE_OFFSETS map. One possible move is A8 - 18 (up one square, and two
+ *    squares to the left - which is off the board). 0 - 18 = -18 & 0x88 = 0x88
+ *    (because of two-complement representation of -18). The non-zero result
+ *    means the square is off the board and the move is illegal. Take the
+ *    opposite move (from A8 to C7), 0 + 18 = 18 & 0x88 = 0. A result of zero
+ *    means the square is on the board.
+ *
+ * 2. The relative distance (or difference) between two squares on a 8x16 board
+ *    is unique and can be used to inexpensively determine if a piece on a
+ *    square can attack any other arbitrary square. For example, let's see if a
+ *    pawn on E7 can attack E2. The difference between E7 (20) - E2 (100) is
+ *    -80. We add 119 to make the ATTACKS array index non-negative (because the
+ *    worst case difference is A8 - H1 = -119). The ATTACKS array contains a
+ *    bitmask of pieces that can attack from that distance and direction.
+ *    ATTACKS[-80 + 119=39] gives us 24 or 0b11000 in binary. Look at the
+ *    PIECE_MASKS map to determine the mask for a given piece type. In our pawn
+ *    example, we would check to see if 24 & 0x1 is non-zero, which it is
+ *    not. So, naturally, a pawn on E7 can't attack a piece on E2. However, a
+ *    rook can since 24 & 0x8 is non-zero. The only thing left to check is that
+ *    there are no blocking pieces between E7 and E2. That's where the RAYS
+ *    array comes in. It provides an offset (in this case 16) to add to E7 (20)
+ *    to check for blocking pieces. E7 (20) + 16 = E6 (36) + 16 = E5 (52) etc.
+ */
+// prettier-ignore
+// eslint-disable-next-line
+const Ox88 = {
+    a8: 0, b8: 1, c8: 2, d8: 3, e8: 4, f8: 5, g8: 6, h8: 7,
+    a7: 16, b7: 17, c7: 18, d7: 19, e7: 20, f7: 21, g7: 22, h7: 23,
+    a6: 32, b6: 33, c6: 34, d6: 35, e6: 36, f6: 37, g6: 38, h6: 39,
+    a5: 48, b5: 49, c5: 50, d5: 51, e5: 52, f5: 53, g5: 54, h5: 55,
+    a4: 64, b4: 65, c4: 66, d4: 67, e4: 68, f4: 69, g4: 70, h4: 71,
+    a3: 80, b3: 81, c3: 82, d3: 83, e3: 84, f3: 85, g3: 86, h3: 87,
+    a2: 96, b2: 97, c2: 98, d2: 99, e2: 100, f2: 101, g2: 102, h2: 103,
+    a1: 112, b1: 113, c1: 114, d1: 115, e1: 116, f1: 117, g1: 118, h1: 119
+};
+const PAWN_OFFSETS = {
+    b: [16, 32, 17, 15],
+    w: [-16, -32, -17, -15],
+};
+const PIECE_OFFSETS = {
+    n: [-18, -33, -31, -14, 18, 33, 31, 14],
+    b: [-17, -15, 17, 15],
+    r: [-16, 1, 16, -1],
+    q: [-17, -16, -15, 1, 17, 16, 15, -1],
+    k: [-17, -16, -15, 1, 17, 16, 15, -1],
+};
+// prettier-ignore
+const ATTACKS = [
+    20, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 20, 0,
+    0, 20, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 20, 0, 0,
+    0, 0, 20, 0, 0, 0, 0, 24, 0, 0, 0, 0, 20, 0, 0, 0,
+    0, 0, 0, 20, 0, 0, 0, 24, 0, 0, 0, 20, 0, 0, 0, 0,
+    0, 0, 0, 0, 20, 0, 0, 24, 0, 0, 20, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 20, 2, 24, 2, 20, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 2, 53, 56, 53, 2, 0, 0, 0, 0, 0, 0,
+    24, 24, 24, 24, 24, 24, 56, 0, 56, 24, 24, 24, 24, 24, 24, 0,
+    0, 0, 0, 0, 0, 2, 53, 56, 53, 2, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 20, 2, 24, 2, 20, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 20, 0, 0, 24, 0, 0, 20, 0, 0, 0, 0, 0,
+    0, 0, 0, 20, 0, 0, 0, 24, 0, 0, 0, 20, 0, 0, 0, 0,
+    0, 0, 20, 0, 0, 0, 0, 24, 0, 0, 0, 0, 20, 0, 0, 0,
+    0, 20, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 20, 0, 0,
+    20, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 20
+];
+// prettier-ignore
+const RAYS = [
+    17, 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 15, 0,
+    0, 17, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 15, 0, 0,
+    0, 0, 17, 0, 0, 0, 0, 16, 0, 0, 0, 0, 15, 0, 0, 0,
+    0, 0, 0, 17, 0, 0, 0, 16, 0, 0, 0, 15, 0, 0, 0, 0,
+    0, 0, 0, 0, 17, 0, 0, 16, 0, 0, 15, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 17, 0, 16, 0, 15, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 17, 16, 15, 0, 0, 0, 0, 0, 0, 0,
+    1, 1, 1, 1, 1, 1, 1, 0, -1, -1, -1, -1, -1, -1, -1, 0,
+    0, 0, 0, 0, 0, 0, -15, -16, -17, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, -15, 0, -16, 0, -17, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, -15, 0, 0, -16, 0, 0, -17, 0, 0, 0, 0, 0,
+    0, 0, 0, -15, 0, 0, 0, -16, 0, 0, 0, -17, 0, 0, 0, 0,
+    0, 0, -15, 0, 0, 0, 0, -16, 0, 0, 0, 0, -17, 0, 0, 0,
+    0, -15, 0, 0, 0, 0, 0, -16, 0, 0, 0, 0, 0, -17, 0, 0,
+    -15, 0, 0, 0, 0, 0, 0, -16, 0, 0, 0, 0, 0, 0, -17
+];
+const PIECE_MASKS = { p: 0x1, n: 0x2, b: 0x4, r: 0x8, q: 0x10, k: 0x20 };
+const SYMBOLS = 'pnbrqkPNBRQK';
+const PROMOTIONS = [KNIGHT, BISHOP, ROOK, QUEEN];
+const RANK_1 = 7;
+const RANK_2 = 6;
+/*
+ * const RANK_3 = 5
+ * const RANK_4 = 4
+ * const RANK_5 = 3
+ * const RANK_6 = 2
+ */
+const RANK_7 = 1;
+const RANK_8 = 0;
+const SIDES = {
+    [KING]: BITS.KSIDE_CASTLE,
+    [QUEEN]: BITS.QSIDE_CASTLE,
+};
+const ROOKS = {
+    w: [
+        { square: Ox88.a1, flag: BITS.QSIDE_CASTLE },
+        { square: Ox88.h1, flag: BITS.KSIDE_CASTLE },
+    ],
+    b: [
+        { square: Ox88.a8, flag: BITS.QSIDE_CASTLE },
+        { square: Ox88.h8, flag: BITS.KSIDE_CASTLE },
+    ],
+};
+const SECOND_RANK = { b: RANK_7, w: RANK_2 };
+const SAN_NULLMOVE = '--';
+// Extracts the zero-based rank of an 0x88 square.
+function rank(square) {
+    return square >> 4;
+}
+// Extracts the zero-based file of an 0x88 square.
+function file(square) {
+    return square & 0xf;
+}
+function isDigit(c) {
+    return '0123456789'.indexOf(c) !== -1;
+}
+// Converts a 0x88 square to algebraic notation.
+function algebraic(square) {
+    const f = file(square);
+    const r = rank(square);
+    return ('abcdefgh'.substring(f, f + 1) +
+        '87654321'.substring(r, r + 1));
+}
+function swapColor(color) {
+    return color === WHITE ? BLACK : WHITE;
+}
+function validateFen(fen) {
+    // 1st criterion: 6 space-seperated fields?
+    const tokens = fen.split(/\s+/);
+    if (tokens.length !== 6) {
+        return {
+            ok: false,
+            error: 'Invalid FEN: must contain six space-delimited fields',
+        };
+    }
+    // 2nd criterion: move number field is a integer value > 0?
+    const moveNumber = parseInt(tokens[5], 10);
+    if (isNaN(moveNumber) || moveNumber <= 0) {
+        return {
+            ok: false,
+            error: 'Invalid FEN: move number must be a positive integer',
+        };
+    }
+    // 3rd criterion: half move counter is an integer >= 0?
+    const halfMoves = parseInt(tokens[4], 10);
+    if (isNaN(halfMoves) || halfMoves < 0) {
+        return {
+            ok: false,
+            error: 'Invalid FEN: half move counter number must be a non-negative integer',
+        };
+    }
+    // 4th criterion: 4th field is a valid e.p.-string?
+    if (!/^(-|[abcdefgh][36])$/.test(tokens[3])) {
+        return { ok: false, error: 'Invalid FEN: en-passant square is invalid' };
+    }
+    // 5th criterion: 3th field is a valid castle-string?
+    if (/[^kKqQ-]/.test(tokens[2])) {
+        return { ok: false, error: 'Invalid FEN: castling availability is invalid' };
+    }
+    // 6th criterion: 2nd field is "w" (white) or "b" (black)?
+    if (!/^(w|b)$/.test(tokens[1])) {
+        return { ok: false, error: 'Invalid FEN: side-to-move is invalid' };
+    }
+    // 7th criterion: 1st field contains 8 rows?
+    const rows = tokens[0].split('/');
+    if (rows.length !== 8) {
+        return {
+            ok: false,
+            error: "Invalid FEN: piece data does not contain 8 '/'-delimited rows",
+        };
+    }
+    // 8th criterion: every row is valid?
+    for (let i = 0; i < rows.length; i++) {
+        // check for right sum of fields AND not two numbers in succession
+        let sumFields = 0;
+        let previousWasNumber = false;
+        for (let k = 0; k < rows[i].length; k++) {
+            if (isDigit(rows[i][k])) {
+                if (previousWasNumber) {
+                    return {
+                        ok: false,
+                        error: 'Invalid FEN: piece data is invalid (consecutive number)',
+                    };
+                }
+                sumFields += parseInt(rows[i][k], 10);
+                previousWasNumber = true;
+            }
+            else {
+                if (!/^[prnbqkPRNBQK]$/.test(rows[i][k])) {
+                    return {
+                        ok: false,
+                        error: 'Invalid FEN: piece data is invalid (invalid piece)',
+                    };
+                }
+                sumFields += 1;
+                previousWasNumber = false;
+            }
+        }
+        if (sumFields !== 8) {
+            return {
+                ok: false,
+                error: 'Invalid FEN: piece data is invalid (too many squares in rank)',
+            };
+        }
+    }
+    // 9th criterion: is en-passant square legal?
+    if ((tokens[3][1] == '3' && tokens[1] == 'w') ||
+        (tokens[3][1] == '6' && tokens[1] == 'b')) {
+        return { ok: false, error: 'Invalid FEN: illegal en-passant square' };
+    }
+    // 10th criterion: does chess position contain exact two kings?
+    const kings = [
+        { color: 'white', regex: /K/g },
+        { color: 'black', regex: /k/g },
+    ];
+    for (const { color, regex } of kings) {
+        if (!regex.test(tokens[0])) {
+            return { ok: false, error: `Invalid FEN: missing ${color} king` };
+        }
+        if ((tokens[0].match(regex) || []).length > 1) {
+            return { ok: false, error: `Invalid FEN: too many ${color} kings` };
+        }
+    }
+    // 11th criterion: are any pawns on the first or eighth rows?
+    if (Array.from(rows[0] + rows[7]).some((char) => char.toUpperCase() === 'P')) {
+        return {
+            ok: false,
+            error: 'Invalid FEN: some pawns are on the edge rows',
+        };
+    }
+    return { ok: true };
+}
+// this function is used to uniquely identify ambiguous moves
+function getDisambiguator(move, moves) {
+    const from = move.from;
+    const to = move.to;
+    const piece = move.piece;
+    let ambiguities = 0;
+    let sameRank = 0;
+    let sameFile = 0;
+    for (let i = 0, len = moves.length; i < len; i++) {
+        const ambigFrom = moves[i].from;
+        const ambigTo = moves[i].to;
+        const ambigPiece = moves[i].piece;
+        /*
+         * if a move of the same piece type ends on the same to square, we'll need
+         * to add a disambiguator to the algebraic notation
+         */
+        if (piece === ambigPiece && from !== ambigFrom && to === ambigTo) {
+            ambiguities++;
+            if (rank(from) === rank(ambigFrom)) {
+                sameRank++;
+            }
+            if (file(from) === file(ambigFrom)) {
+                sameFile++;
+            }
+        }
+    }
+    if (ambiguities > 0) {
+        if (sameRank > 0 && sameFile > 0) {
+            /*
+             * if there exists a similar moving piece on the same rank and file as
+             * the move in question, use the square as the disambiguator
+             */
+            return algebraic(from);
+        }
+        else if (sameFile > 0) {
+            /*
+             * if the moving piece rests on the same file, use the rank symbol as the
+             * disambiguator
+             */
+            return algebraic(from).charAt(1);
+        }
+        else {
+            // else use the file symbol
+            return algebraic(from).charAt(0);
+        }
+    }
+    return '';
+}
+function addMove(moves, color, from, to, piece, captured = undefined, flags = BITS.NORMAL) {
+    const r = rank(to);
+    if (piece === PAWN && (r === RANK_1 || r === RANK_8)) {
+        for (let i = 0; i < PROMOTIONS.length; i++) {
+            const promotion = PROMOTIONS[i];
+            moves.push({
+                color,
+                from,
+                to,
+                piece,
+                captured,
+                promotion,
+                flags: flags | BITS.PROMOTION,
+            });
+        }
+    }
+    else {
+        moves.push({
+            color,
+            from,
+            to,
+            piece,
+            captured,
+            flags,
+        });
+    }
+}
+function inferPieceType(san) {
+    let pieceType = san.charAt(0);
+    if (pieceType >= 'a' && pieceType <= 'h') {
+        const matches = san.match(/[a-h]\d.*[a-h]\d/);
+        if (matches) {
+            return undefined;
+        }
+        return PAWN;
+    }
+    pieceType = pieceType.toLowerCase();
+    if (pieceType === 'o') {
+        return KING;
+    }
+    return pieceType;
+}
+// parses all of the decorators out of a SAN string
+function strippedSan(move) {
+    return move.replace(/=/, '').replace(/[+#]?[?!]*$/, '');
+}
+class Chess {
+    _board = new Array(128);
+    _turn = WHITE;
+    _header = {};
+    _kings = { w: EMPTY, b: EMPTY };
+    _epSquare = -1;
+    _halfMoves = 0;
+    _moveNumber = 0;
+    _history = [];
+    _comments = {};
+    _castling = { w: 0, b: 0 };
+    _hash = 0n;
+    // tracks number of times a position has been seen for repetition checking
+    _positionCount = new Map();
+    constructor(fen = DEFAULT_POSITION, { skipValidation = false } = {}) {
+        this.load(fen, { skipValidation });
+    }
+    clear({ preserveHeaders = false } = {}) {
+        this._board = new Array(128);
+        this._kings = { w: EMPTY, b: EMPTY };
+        this._turn = WHITE;
+        this._castling = { w: 0, b: 0 };
+        this._epSquare = EMPTY;
+        this._halfMoves = 0;
+        this._moveNumber = 1;
+        this._history = [];
+        this._comments = {};
+        this._header = preserveHeaders ? this._header : { ...HEADER_TEMPLATE };
+        this._hash = this._computeHash();
+        this._positionCount = new Map();
+        /*
+         * Delete the SetUp and FEN headers (if preserved), the board is empty and
+         * these headers don't make sense in this state. They'll get added later
+         * via .load() or .put()
+         */
+        this._header['SetUp'] = null;
+        this._header['FEN'] = null;
+    }
+    load(fen, { skipValidation = false, preserveHeaders = false } = {}) {
+        let tokens = fen.split(/\s+/);
+        // append commonly omitted fen tokens
+        if (tokens.length >= 2 && tokens.length < 6) {
+            const adjustments = ['-', '-', '0', '1'];
+            fen = tokens.concat(adjustments.slice(-(6 - tokens.length))).join(' ');
+        }
+        tokens = fen.split(/\s+/);
+        if (!skipValidation) {
+            const { ok, error } = validateFen(fen);
+            if (!ok) {
+                throw new Error(error);
+            }
+        }
+        const position = tokens[0];
+        let square = 0;
+        this.clear({ preserveHeaders });
+        for (let i = 0; i < position.length; i++) {
+            const piece = position.charAt(i);
+            if (piece === '/') {
+                square += 8;
+            }
+            else if (isDigit(piece)) {
+                square += parseInt(piece, 10);
+            }
+            else {
+                const color = piece < 'a' ? WHITE : BLACK;
+                this._put({ type: piece.toLowerCase(), color }, algebraic(square));
+                square++;
+            }
+        }
+        this._turn = tokens[1];
+        if (tokens[2].indexOf('K') > -1) {
+            this._castling.w |= BITS.KSIDE_CASTLE;
+        }
+        if (tokens[2].indexOf('Q') > -1) {
+            this._castling.w |= BITS.QSIDE_CASTLE;
+        }
+        if (tokens[2].indexOf('k') > -1) {
+            this._castling.b |= BITS.KSIDE_CASTLE;
+        }
+        if (tokens[2].indexOf('q') > -1) {
+            this._castling.b |= BITS.QSIDE_CASTLE;
+        }
+        this._epSquare = tokens[3] === '-' ? EMPTY : Ox88[tokens[3]];
+        this._halfMoves = parseInt(tokens[4], 10);
+        this._moveNumber = parseInt(tokens[5], 10);
+        this._hash = this._computeHash();
+        this._updateSetup(fen);
+        this._incPositionCount();
+    }
+    fen({ forceEnpassantSquare = false, } = {}) {
+        let empty = 0;
+        let fen = '';
+        for (let i = Ox88.a8; i <= Ox88.h1; i++) {
+            if (this._board[i]) {
+                if (empty > 0) {
+                    fen += empty;
+                    empty = 0;
+                }
+                const { color, type: piece } = this._board[i];
+                fen += color === WHITE ? piece.toUpperCase() : piece.toLowerCase();
+            }
+            else {
+                empty++;
+            }
+            if ((i + 1) & 0x88) {
+                if (empty > 0) {
+                    fen += empty;
+                }
+                if (i !== Ox88.h1) {
+                    fen += '/';
+                }
+                empty = 0;
+                i += 8;
+            }
+        }
+        let castling = '';
+        if (this._castling[WHITE] & BITS.KSIDE_CASTLE) {
+            castling += 'K';
+        }
+        if (this._castling[WHITE] & BITS.QSIDE_CASTLE) {
+            castling += 'Q';
+        }
+        if (this._castling[BLACK] & BITS.KSIDE_CASTLE) {
+            castling += 'k';
+        }
+        if (this._castling[BLACK] & BITS.QSIDE_CASTLE) {
+            castling += 'q';
+        }
+        // do we have an empty castling flag?
+        castling = castling || '-';
+        let epSquare = '-';
+        /*
+         * only print the ep square if en passant is a valid move (pawn is present
+         * and ep capture is not pinned)
+         */
+        if (this._epSquare !== EMPTY) {
+            if (forceEnpassantSquare) {
+                epSquare = algebraic(this._epSquare);
+            }
+            else {
+                const bigPawnSquare = this._epSquare + (this._turn === WHITE ? 16 : -16);
+                const squares = [bigPawnSquare + 1, bigPawnSquare - 1];
+                for (const square of squares) {
+                    // is the square off the board?
+                    if (square & 0x88) {
+                        continue;
+                    }
+                    const color = this._turn;
+                    // is there a pawn that can capture the epSquare?
+                    if (this._board[square]?.color === color &&
+                        this._board[square]?.type === PAWN) {
+                        // if the pawn makes an ep capture, does it leave its king in check?
+                        this._makeMove({
+                            color,
+                            from: square,
+                            to: this._epSquare,
+                            piece: PAWN,
+                            captured: PAWN,
+                            flags: BITS.EP_CAPTURE,
+                        });
+                        const isLegal = !this._isKingAttacked(color);
+                        this._undoMove();
+                        // if ep is legal, break and set the ep square in the FEN output
+                        if (isLegal) {
+                            epSquare = algebraic(this._epSquare);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return [
+            fen,
+            this._turn,
+            castling,
+            epSquare,
+            this._halfMoves,
+            this._moveNumber,
+        ].join(' ');
+    }
+    _pieceKey(i) {
+        if (!this._board[i]) {
+            return 0n;
+        }
+        const { color, type } = this._board[i];
+        const colorIndex = {
+            w: 0,
+            b: 1,
+        }[color];
+        const typeIndex = {
+            p: 0,
+            n: 1,
+            b: 2,
+            r: 3,
+            q: 4,
+            k: 5,
+        }[type];
+        return PIECE_KEYS[colorIndex][typeIndex][i];
+    }
+    _epKey() {
+        return this._epSquare === EMPTY ? 0n : EP_KEYS[this._epSquare & 7];
+    }
+    _castlingKey() {
+        const index = (this._castling.w >> 5) | (this._castling.b >> 3);
+        return CASTLING_KEYS[index];
+    }
+    _computeHash() {
+        let hash = 0n;
+        for (let i = Ox88.a8; i <= Ox88.h1; i++) {
+            // did we run off the end of the board
+            if (i & 0x88) {
+                i += 7;
+                continue;
+            }
+            if (this._board[i]) {
+                hash ^= this._pieceKey(i);
+            }
+        }
+        hash ^= this._epKey();
+        hash ^= this._castlingKey();
+        if (this._turn === 'b') {
+            hash ^= SIDE_KEY;
+        }
+        return hash;
+    }
+    /*
+     * Called when the initial board setup is changed with put() or remove().
+     * modifies the SetUp and FEN properties of the header object. If the FEN
+     * is equal to the default position, the SetUp and FEN are deleted the setup
+     * is only updated if history.length is zero, ie moves haven't been made.
+     */
+    _updateSetup(fen) {
+        if (this._history.length > 0)
+            return;
+        if (fen !== DEFAULT_POSITION) {
+            this._header['SetUp'] = '1';
+            this._header['FEN'] = fen;
+        }
+        else {
+            this._header['SetUp'] = null;
+            this._header['FEN'] = null;
+        }
+    }
+    reset() {
+        this.load(DEFAULT_POSITION);
+    }
+    get(square) {
+        return this._board[Ox88[square]];
+    }
+    findPiece(piece) {
+        const squares = [];
+        for (let i = Ox88.a8; i <= Ox88.h1; i++) {
+            // did we run off the end of the board
+            if (i & 0x88) {
+                i += 7;
+                continue;
+            }
+            // if empty square or wrong color
+            if (!this._board[i] || this._board[i]?.color !== piece.color) {
+                continue;
+            }
+            // check if square contains the requested piece
+            if (this._board[i].color === piece.color &&
+                this._board[i].type === piece.type) {
+                squares.push(algebraic(i));
+            }
+        }
+        return squares;
+    }
+    put({ type, color }, square) {
+        if (this._put({ type, color }, square)) {
+            this._updateCastlingRights();
+            this._updateEnPassantSquare();
+            this._updateSetup(this.fen());
+            return true;
+        }
+        return false;
+    }
+    _set(sq, piece) {
+        this._hash ^= this._pieceKey(sq);
+        this._board[sq] = piece;
+        this._hash ^= this._pieceKey(sq);
+    }
+    _put({ type, color }, square) {
+        // check for piece
+        if (SYMBOLS.indexOf(type.toLowerCase()) === -1) {
+            return false;
+        }
+        // check for valid square
+        if (!(square in Ox88)) {
+            return false;
+        }
+        const sq = Ox88[square];
+        // don't let the user place more than one king
+        if (type == KING &&
+            !(this._kings[color] == EMPTY || this._kings[color] == sq)) {
+            return false;
+        }
+        const currentPieceOnSquare = this._board[sq];
+        // if one of the kings will be replaced by the piece from args, set the `_kings` respective entry to `EMPTY`
+        if (currentPieceOnSquare && currentPieceOnSquare.type === KING) {
+            this._kings[currentPieceOnSquare.color] = EMPTY;
+        }
+        this._set(sq, { type: type, color: color });
+        if (type === KING) {
+            this._kings[color] = sq;
+        }
+        return true;
+    }
+    _clear(sq) {
+        this._hash ^= this._pieceKey(sq);
+        delete this._board[sq];
+    }
+    remove(square) {
+        const piece = this.get(square);
+        this._clear(Ox88[square]);
+        if (piece && piece.type === KING) {
+            this._kings[piece.color] = EMPTY;
+        }
+        this._updateCastlingRights();
+        this._updateEnPassantSquare();
+        this._updateSetup(this.fen());
+        return piece;
+    }
+    _updateCastlingRights() {
+        this._hash ^= this._castlingKey();
+        const whiteKingInPlace = this._board[Ox88.e1]?.type === KING &&
+            this._board[Ox88.e1]?.color === WHITE;
+        const blackKingInPlace = this._board[Ox88.e8]?.type === KING &&
+            this._board[Ox88.e8]?.color === BLACK;
+        if (!whiteKingInPlace ||
+            this._board[Ox88.a1]?.type !== ROOK ||
+            this._board[Ox88.a1]?.color !== WHITE) {
+            this._castling.w &= -65;
+        }
+        if (!whiteKingInPlace ||
+            this._board[Ox88.h1]?.type !== ROOK ||
+            this._board[Ox88.h1]?.color !== WHITE) {
+            this._castling.w &= -33;
+        }
+        if (!blackKingInPlace ||
+            this._board[Ox88.a8]?.type !== ROOK ||
+            this._board[Ox88.a8]?.color !== BLACK) {
+            this._castling.b &= -65;
+        }
+        if (!blackKingInPlace ||
+            this._board[Ox88.h8]?.type !== ROOK ||
+            this._board[Ox88.h8]?.color !== BLACK) {
+            this._castling.b &= -33;
+        }
+        this._hash ^= this._castlingKey();
+    }
+    _updateEnPassantSquare() {
+        if (this._epSquare === EMPTY) {
+            return;
+        }
+        const startSquare = this._epSquare + (this._turn === WHITE ? -16 : 16);
+        const currentSquare = this._epSquare + (this._turn === WHITE ? 16 : -16);
+        const attackers = [currentSquare + 1, currentSquare - 1];
+        if (this._board[startSquare] !== null ||
+            this._board[this._epSquare] !== null ||
+            this._board[currentSquare]?.color !== swapColor(this._turn) ||
+            this._board[currentSquare]?.type !== PAWN) {
+            this._hash ^= this._epKey();
+            this._epSquare = EMPTY;
+            return;
+        }
+        const canCapture = (square) => !(square & 0x88) &&
+            this._board[square]?.color === this._turn &&
+            this._board[square]?.type === PAWN;
+        if (!attackers.some(canCapture)) {
+            this._hash ^= this._epKey();
+            this._epSquare = EMPTY;
+        }
+    }
+    _attacked(color, square, verbose) {
+        const attackers = [];
+        for (let i = Ox88.a8; i <= Ox88.h1; i++) {
+            // did we run off the end of the board
+            if (i & 0x88) {
+                i += 7;
+                continue;
+            }
+            // if empty square or wrong color
+            if (this._board[i] === undefined || this._board[i].color !== color) {
+                continue;
+            }
+            const piece = this._board[i];
+            const difference = i - square;
+            // skip - to/from square are the same
+            if (difference === 0) {
+                continue;
+            }
+            const index = difference + 119;
+            if (ATTACKS[index] & PIECE_MASKS[piece.type]) {
+                if (piece.type === PAWN) {
+                    if ((difference > 0 && piece.color === WHITE) ||
+                        (difference <= 0 && piece.color === BLACK)) {
+                        if (!verbose) {
+                            return true;
+                        }
+                        else {
+                            attackers.push(algebraic(i));
+                        }
+                    }
+                    continue;
+                }
+                // if the piece is a knight or a king
+                if (piece.type === 'n' || piece.type === 'k') {
+                    if (!verbose) {
+                        return true;
+                    }
+                    else {
+                        attackers.push(algebraic(i));
+                        continue;
+                    }
+                }
+                const offset = RAYS[index];
+                let j = i + offset;
+                let blocked = false;
+                while (j !== square) {
+                    if (this._board[j] != null) {
+                        blocked = true;
+                        break;
+                    }
+                    j += offset;
+                }
+                if (!blocked) {
+                    if (!verbose) {
+                        return true;
+                    }
+                    else {
+                        attackers.push(algebraic(i));
+                        continue;
+                    }
+                }
+            }
+        }
+        if (verbose) {
+            return attackers;
+        }
+        else {
+            return false;
+        }
+    }
+    attackers(square, attackedBy) {
+        if (!attackedBy) {
+            return this._attacked(this._turn, Ox88[square], true);
+        }
+        else {
+            return this._attacked(attackedBy, Ox88[square], true);
+        }
+    }
+    _isKingAttacked(color) {
+        const square = this._kings[color];
+        return square === -1 ? false : this._attacked(swapColor(color), square);
+    }
+    hash() {
+        return this._hash.toString(16);
+    }
+    isAttacked(square, attackedBy) {
+        return this._attacked(attackedBy, Ox88[square]);
+    }
+    isCheck() {
+        return this._isKingAttacked(this._turn);
+    }
+    inCheck() {
+        return this.isCheck();
+    }
+    isCheckmate() {
+        return this.isCheck() && this._moves().length === 0;
+    }
+    isStalemate() {
+        return !this.isCheck() && this._moves().length === 0;
+    }
+    isInsufficientMaterial() {
+        /*
+         * k.b. vs k.b. (of opposite colors) with mate in 1:
+         * 8/8/8/8/1b6/8/B1k5/K7 b - - 0 1
+         *
+         * k.b. vs k.n. with mate in 1:
+         * 8/8/8/8/1n6/8/B7/K1k5 b - - 2 1
+         */
+        const pieces = {
+            b: 0,
+            n: 0,
+            r: 0,
+            q: 0,
+            k: 0,
+            p: 0,
+        };
+        const bishops = [];
+        let numPieces = 0;
+        let squareColor = 0;
+        for (let i = Ox88.a8; i <= Ox88.h1; i++) {
+            squareColor = (squareColor + 1) % 2;
+            if (i & 0x88) {
+                i += 7;
+                continue;
+            }
+            const piece = this._board[i];
+            if (piece) {
+                pieces[piece.type] = piece.type in pieces ? pieces[piece.type] + 1 : 1;
+                if (piece.type === BISHOP) {
+                    bishops.push(squareColor);
+                }
+                numPieces++;
+            }
+        }
+        // k vs. k
+        if (numPieces === 2) {
+            return true;
+        }
+        else if (
+        // k vs. kn .... or .... k vs. kb
+        numPieces === 3 &&
+            (pieces[BISHOP] === 1 || pieces[KNIGHT] === 1)) {
+            return true;
+        }
+        else if (numPieces === pieces[BISHOP] + 2) {
+            // kb vs. kb where any number of bishops are all on the same color
+            let sum = 0;
+            const len = bishops.length;
+            for (let i = 0; i < len; i++) {
+                sum += bishops[i];
+            }
+            if (sum === 0 || sum === len) {
+                return true;
+            }
+        }
+        return false;
+    }
+    isThreefoldRepetition() {
+        return this._getPositionCount(this._hash) >= 3;
+    }
+    isDrawByFiftyMoves() {
+        return this._halfMoves >= 100; // 50 moves per side = 100 half moves
+    }
+    isDraw() {
+        return (this.isDrawByFiftyMoves() ||
+            this.isStalemate() ||
+            this.isInsufficientMaterial() ||
+            this.isThreefoldRepetition());
+    }
+    isGameOver() {
+        return this.isCheckmate() || this.isDraw();
+    }
+    moves({ verbose = false, square = undefined, piece = undefined, } = {}) {
+        const moves = this._moves({ square, piece });
+        if (verbose) {
+            return moves.map((move) => new Move(this, move));
+        }
+        else {
+            return moves.map((move) => this._moveToSan(move, moves));
+        }
+    }
+    _moves({ legal = true, piece = undefined, square = undefined, } = {}) {
+        const forSquare = square ? square.toLowerCase() : undefined;
+        const forPiece = piece?.toLowerCase();
+        const moves = [];
+        const us = this._turn;
+        const them = swapColor(us);
+        let firstSquare = Ox88.a8;
+        let lastSquare = Ox88.h1;
+        let singleSquare = false;
+        // are we generating moves for a single square?
+        if (forSquare) {
+            // illegal square, return empty moves
+            if (!(forSquare in Ox88)) {
+                return [];
+            }
+            else {
+                firstSquare = lastSquare = Ox88[forSquare];
+                singleSquare = true;
+            }
+        }
+        for (let from = firstSquare; from <= lastSquare; from++) {
+            // did we run off the end of the board
+            if (from & 0x88) {
+                from += 7;
+                continue;
+            }
+            // empty square or opponent, skip
+            if (!this._board[from] || this._board[from].color === them) {
+                continue;
+            }
+            const { type } = this._board[from];
+            let to;
+            if (type === PAWN) {
+                if (forPiece && forPiece !== type)
+                    continue;
+                // single square, non-capturing
+                to = from + PAWN_OFFSETS[us][0];
+                if (!this._board[to]) {
+                    addMove(moves, us, from, to, PAWN);
+                    // double square
+                    to = from + PAWN_OFFSETS[us][1];
+                    if (SECOND_RANK[us] === rank(from) && !this._board[to]) {
+                        addMove(moves, us, from, to, PAWN, undefined, BITS.BIG_PAWN);
+                    }
+                }
+                // pawn captures
+                for (let j = 2; j < 4; j++) {
+                    to = from + PAWN_OFFSETS[us][j];
+                    if (to & 0x88)
+                        continue;
+                    if (this._board[to]?.color === them) {
+                        addMove(moves, us, from, to, PAWN, this._board[to].type, BITS.CAPTURE);
+                    }
+                    else if (to === this._epSquare) {
+                        addMove(moves, us, from, to, PAWN, PAWN, BITS.EP_CAPTURE);
+                    }
+                }
+            }
+            else {
+                if (forPiece && forPiece !== type)
+                    continue;
+                for (let j = 0, len = PIECE_OFFSETS[type].length; j < len; j++) {
+                    const offset = PIECE_OFFSETS[type][j];
+                    to = from;
+                    while (true) {
+                        to += offset;
+                        if (to & 0x88)
+                            break;
+                        if (!this._board[to]) {
+                            addMove(moves, us, from, to, type);
+                        }
+                        else {
+                            // own color, stop loop
+                            if (this._board[to].color === us)
+                                break;
+                            addMove(moves, us, from, to, type, this._board[to].type, BITS.CAPTURE);
+                            break;
+                        }
+                        /* break, if knight or king */
+                        if (type === KNIGHT || type === KING)
+                            break;
+                    }
+                }
+            }
+        }
+        /*
+         * check for castling if we're:
+         *   a) generating all moves, or
+         *   b) doing single square move generation on the king's square
+         */
+        if (forPiece === undefined || forPiece === KING) {
+            if (!singleSquare || lastSquare === this._kings[us]) {
+                // king-side castling
+                if (this._castling[us] & BITS.KSIDE_CASTLE) {
+                    const castlingFrom = this._kings[us];
+                    const castlingTo = castlingFrom + 2;
+                    if (!this._board[castlingFrom + 1] &&
+                        !this._board[castlingTo] &&
+                        !this._attacked(them, this._kings[us]) &&
+                        !this._attacked(them, castlingFrom + 1) &&
+                        !this._attacked(them, castlingTo)) {
+                        addMove(moves, us, this._kings[us], castlingTo, KING, undefined, BITS.KSIDE_CASTLE);
+                    }
+                }
+                // queen-side castling
+                if (this._castling[us] & BITS.QSIDE_CASTLE) {
+                    const castlingFrom = this._kings[us];
+                    const castlingTo = castlingFrom - 2;
+                    if (!this._board[castlingFrom - 1] &&
+                        !this._board[castlingFrom - 2] &&
+                        !this._board[castlingFrom - 3] &&
+                        !this._attacked(them, this._kings[us]) &&
+                        !this._attacked(them, castlingFrom - 1) &&
+                        !this._attacked(them, castlingTo)) {
+                        addMove(moves, us, this._kings[us], castlingTo, KING, undefined, BITS.QSIDE_CASTLE);
+                    }
+                }
+            }
+        }
+        /*
+         * return all pseudo-legal moves (this includes moves that allow the king
+         * to be captured)
+         */
+        if (!legal || this._kings[us] === -1) {
+            return moves;
+        }
+        // filter out illegal moves
+        const legalMoves = [];
+        for (let i = 0, len = moves.length; i < len; i++) {
+            this._makeMove(moves[i]);
+            if (!this._isKingAttacked(us)) {
+                legalMoves.push(moves[i]);
+            }
+            this._undoMove();
+        }
+        return legalMoves;
+    }
+    move(move, { strict = false } = {}) {
+        /*
+         * The move function can be called with in the following parameters:
+         *
+         * .move('Nxb7')       <- argument is a case-sensitive SAN string
+         *
+         * .move({ from: 'h7', <- argument is a move object
+         *         to :'h8',
+         *         promotion: 'q' })
+         *
+         *
+         * An optional strict argument may be supplied to tell chess.js to
+         * strictly follow the SAN specification.
+         */
+        let moveObj = null;
+        if (typeof move === 'string') {
+            moveObj = this._moveFromSan(move, strict);
+        }
+        else if (move === null) {
+            moveObj = this._moveFromSan(SAN_NULLMOVE, strict);
+        }
+        else if (typeof move === 'object') {
+            const moves = this._moves();
+            // convert the pretty move object to an ugly move object
+            for (let i = 0, len = moves.length; i < len; i++) {
+                if (move.from === algebraic(moves[i].from) &&
+                    move.to === algebraic(moves[i].to) &&
+                    (!('promotion' in moves[i]) || move.promotion === moves[i].promotion)) {
+                    moveObj = moves[i];
+                    break;
+                }
+            }
+        }
+        // failed to find move
+        if (!moveObj) {
+            if (typeof move === 'string') {
+                throw new Error(`Invalid move: ${move}`);
+            }
+            else {
+                throw new Error(`Invalid move: ${JSON.stringify(move)}`);
+            }
+        }
+        //disallow null moves when in check
+        if (this.isCheck() && moveObj.flags & BITS.NULL_MOVE) {
+            throw new Error('Null move not allowed when in check');
+        }
+        /*
+         * need to make a copy of move because we can't generate SAN after the move
+         * is made
+         */
+        const prettyMove = new Move(this, moveObj);
+        this._makeMove(moveObj);
+        this._incPositionCount();
+        return prettyMove;
+    }
+    _push(move) {
+        this._history.push({
+            move,
+            kings: { b: this._kings.b, w: this._kings.w },
+            turn: this._turn,
+            castling: { b: this._castling.b, w: this._castling.w },
+            epSquare: this._epSquare,
+            halfMoves: this._halfMoves,
+            moveNumber: this._moveNumber,
+        });
+    }
+    _movePiece(from, to) {
+        this._hash ^= this._pieceKey(from);
+        this._board[to] = this._board[from];
+        delete this._board[from];
+        this._hash ^= this._pieceKey(to);
+    }
+    _makeMove(move) {
+        const us = this._turn;
+        const them = swapColor(us);
+        this._push(move);
+        if (move.flags & BITS.NULL_MOVE) {
+            if (us === BLACK) {
+                this._moveNumber++;
+            }
+            this._halfMoves++;
+            this._turn = them;
+            this._epSquare = EMPTY;
+            return;
+        }
+        this._hash ^= this._epKey();
+        this._hash ^= this._castlingKey();
+        if (move.captured) {
+            this._hash ^= this._pieceKey(move.to);
+        }
+        this._movePiece(move.from, move.to);
+        // if ep capture, remove the captured pawn
+        if (move.flags & BITS.EP_CAPTURE) {
+            if (this._turn === BLACK) {
+                this._clear(move.to - 16);
+            }
+            else {
+                this._clear(move.to + 16);
+            }
+        }
+        // if pawn promotion, replace with new piece
+        if (move.promotion) {
+            this._clear(move.to);
+            this._set(move.to, { type: move.promotion, color: us });
+        }
+        // if we moved the king
+        if (this._board[move.to].type === KING) {
+            this._kings[us] = move.to;
+            // if we castled, move the rook next to the king
+            if (move.flags & BITS.KSIDE_CASTLE) {
+                const castlingTo = move.to - 1;
+                const castlingFrom = move.to + 1;
+                this._movePiece(castlingFrom, castlingTo);
+            }
+            else if (move.flags & BITS.QSIDE_CASTLE) {
+                const castlingTo = move.to + 1;
+                const castlingFrom = move.to - 2;
+                this._movePiece(castlingFrom, castlingTo);
+            }
+            // turn off castling
+            this._castling[us] = 0;
+        }
+        // turn off castling if we move a rook
+        if (this._castling[us]) {
+            for (let i = 0, len = ROOKS[us].length; i < len; i++) {
+                if (move.from === ROOKS[us][i].square &&
+                    this._castling[us] & ROOKS[us][i].flag) {
+                    this._castling[us] ^= ROOKS[us][i].flag;
+                    break;
+                }
+            }
+        }
+        // turn off castling if we capture a rook
+        if (this._castling[them]) {
+            for (let i = 0, len = ROOKS[them].length; i < len; i++) {
+                if (move.to === ROOKS[them][i].square &&
+                    this._castling[them] & ROOKS[them][i].flag) {
+                    this._castling[them] ^= ROOKS[them][i].flag;
+                    break;
+                }
+            }
+        }
+        this._hash ^= this._castlingKey();
+        // if big pawn move, update the en passant square
+        if (move.flags & BITS.BIG_PAWN) {
+            let epSquare;
+            if (us === BLACK) {
+                epSquare = move.to - 16;
+            }
+            else {
+                epSquare = move.to + 16;
+            }
+            if ((!((move.to - 1) & 0x88) &&
+                this._board[move.to - 1]?.type === PAWN &&
+                this._board[move.to - 1]?.color === them) ||
+                (!((move.to + 1) & 0x88) &&
+                    this._board[move.to + 1]?.type === PAWN &&
+                    this._board[move.to + 1]?.color === them)) {
+                this._epSquare = epSquare;
+                this._hash ^= this._epKey();
+            }
+            else {
+                this._epSquare = EMPTY;
+            }
+        }
+        else {
+            this._epSquare = EMPTY;
+        }
+        // reset the 50 move counter if a pawn is moved or a piece is captured
+        if (move.piece === PAWN) {
+            this._halfMoves = 0;
+        }
+        else if (move.flags & (BITS.CAPTURE | BITS.EP_CAPTURE)) {
+            this._halfMoves = 0;
+        }
+        else {
+            this._halfMoves++;
+        }
+        if (us === BLACK) {
+            this._moveNumber++;
+        }
+        this._turn = them;
+        this._hash ^= SIDE_KEY;
+    }
+    undo() {
+        const hash = this._hash;
+        const move = this._undoMove();
+        if (move) {
+            const prettyMove = new Move(this, move);
+            this._decPositionCount(hash);
+            return prettyMove;
+        }
+        return null;
+    }
+    _undoMove() {
+        const old = this._history.pop();
+        if (old === undefined) {
+            return null;
+        }
+        this._hash ^= this._epKey();
+        this._hash ^= this._castlingKey();
+        const move = old.move;
+        this._kings = old.kings;
+        this._turn = old.turn;
+        this._castling = old.castling;
+        this._epSquare = old.epSquare;
+        this._halfMoves = old.halfMoves;
+        this._moveNumber = old.moveNumber;
+        this._hash ^= this._epKey();
+        this._hash ^= this._castlingKey();
+        this._hash ^= SIDE_KEY;
+        const us = this._turn;
+        const them = swapColor(us);
+        if (move.flags & BITS.NULL_MOVE) {
+            return move;
+        }
+        this._movePiece(move.to, move.from);
+        // to undo any promotions
+        if (move.piece) {
+            this._clear(move.from);
+            this._set(move.from, { type: move.piece, color: us });
+        }
+        if (move.captured) {
+            if (move.flags & BITS.EP_CAPTURE) {
+                // en passant capture
+                let index;
+                if (us === BLACK) {
+                    index = move.to - 16;
+                }
+                else {
+                    index = move.to + 16;
+                }
+                this._set(index, { type: PAWN, color: them });
+            }
+            else {
+                // regular capture
+                this._set(move.to, { type: move.captured, color: them });
+            }
+        }
+        if (move.flags & (BITS.KSIDE_CASTLE | BITS.QSIDE_CASTLE)) {
+            let castlingTo, castlingFrom;
+            if (move.flags & BITS.KSIDE_CASTLE) {
+                castlingTo = move.to + 1;
+                castlingFrom = move.to - 1;
+            }
+            else {
+                castlingTo = move.to - 2;
+                castlingFrom = move.to + 1;
+            }
+            this._movePiece(castlingFrom, castlingTo);
+        }
+        return move;
+    }
+    pgn({ newline = '\n', maxWidth = 0, } = {}) {
+        /*
+         * using the specification from http://www.chessclub.com/help/PGN-spec
+         * example for html usage: .pgn({ max_width: 72, newline_char: "<br />" })
+         */
+        const result = [];
+        let headerExists = false;
+        /* add the PGN header information */
+        for (const i in this._header) {
+            /*
+             * TODO: order of enumerated properties in header object is not
+             * guaranteed, see ECMA-262 spec (section 12.6.4)
+             *
+             * By using HEADER_TEMPLATE, the order of tags should be preserved; we
+             * do have to check for null placeholders, though, and omit them
+             */
+            const headerTag = this._header[i];
+            if (headerTag)
+                result.push(`[${i} "${this._header[i]}"]` + newline);
+            headerExists = true;
+        }
+        if (headerExists && this._history.length) {
+            result.push(newline);
+        }
+        const appendComment = (moveString) => {
+            const comment = this._comments[this.fen()];
+            if (typeof comment !== 'undefined') {
+                const delimiter = moveString.length > 0 ? ' ' : '';
+                moveString = `${moveString}${delimiter}{${comment}}`;
+            }
+            return moveString;
+        };
+        // pop all of history onto reversed_history
+        const reversedHistory = [];
+        while (this._history.length > 0) {
+            reversedHistory.push(this._undoMove());
+        }
+        const moves = [];
+        let moveString = '';
+        // special case of a commented starting position with no moves
+        if (reversedHistory.length === 0) {
+            moves.push(appendComment(''));
+        }
+        // build the list of moves.  a move_string looks like: "3. e3 e6"
+        while (reversedHistory.length > 0) {
+            moveString = appendComment(moveString);
+            const move = reversedHistory.pop();
+            // make TypeScript stop complaining about move being undefined
+            if (!move) {
+                break;
+            }
+            // if the position started with black to move, start PGN with #. ...
+            if (!this._history.length && move.color === 'b') {
+                const prefix = `${this._moveNumber}. ...`;
+                // is there a comment preceding the first move?
+                moveString = moveString ? `${moveString} ${prefix}` : prefix;
+            }
+            else if (move.color === 'w') {
+                // store the previous generated move_string if we have one
+                if (moveString.length) {
+                    moves.push(moveString);
+                }
+                moveString = this._moveNumber + '.';
+            }
+            moveString =
+                moveString + ' ' + this._moveToSan(move, this._moves({ legal: true }));
+            this._makeMove(move);
+        }
+        // are there any other leftover moves?
+        if (moveString.length) {
+            moves.push(appendComment(moveString));
+        }
+        // is there a result? (there ALWAYS has to be a result according to spec; see Seven Tag Roster)
+        moves.push(this._header.Result || '*');
+        /*
+         * history should be back to what it was before we started generating PGN,
+         * so join together moves
+         */
+        if (maxWidth === 0) {
+            return result.join('') + moves.join(' ');
+        }
+        // TODO (jah): huh?
+        const strip = function () {
+            if (result.length > 0 && result[result.length - 1] === ' ') {
+                result.pop();
+                return true;
+            }
+            return false;
+        };
+        // NB: this does not preserve comment whitespace.
+        const wrapComment = function (width, move) {
+            for (const token of move.split(' ')) {
+                if (!token) {
+                    continue;
+                }
+                if (width + token.length > maxWidth) {
+                    while (strip()) {
+                        width--;
+                    }
+                    result.push(newline);
+                    width = 0;
+                }
+                result.push(token);
+                width += token.length;
+                result.push(' ');
+                width++;
+            }
+            if (strip()) {
+                width--;
+            }
+            return width;
+        };
+        // wrap the PGN output at max_width
+        let currentWidth = 0;
+        for (let i = 0; i < moves.length; i++) {
+            if (currentWidth + moves[i].length > maxWidth) {
+                if (moves[i].includes('{')) {
+                    currentWidth = wrapComment(currentWidth, moves[i]);
+                    continue;
+                }
+            }
+            // if the current move will push past max_width
+            if (currentWidth + moves[i].length > maxWidth && i !== 0) {
+                // don't end the line with whitespace
+                if (result[result.length - 1] === ' ') {
+                    result.pop();
+                }
+                result.push(newline);
+                currentWidth = 0;
+            }
+            else if (i !== 0) {
+                result.push(' ');
+                currentWidth++;
+            }
+            result.push(moves[i]);
+            currentWidth += moves[i].length;
+        }
+        return result.join('');
+    }
+    /**
+     * @deprecated Use `setHeader` and `getHeaders` instead. This method will return null header tags (which is not what you want)
+     */
+    header(...args) {
+        for (let i = 0; i < args.length; i += 2) {
+            if (typeof args[i] === 'string' && typeof args[i + 1] === 'string') {
+                this._header[args[i]] = args[i + 1];
+            }
+        }
+        return this._header;
+    }
+    // TODO: value validation per spec
+    setHeader(key, value) {
+        this._header[key] = value ?? SEVEN_TAG_ROSTER[key] ?? null;
+        return this.getHeaders();
+    }
+    removeHeader(key) {
+        if (key in this._header) {
+            this._header[key] = SEVEN_TAG_ROSTER[key] || null;
+            return true;
+        }
+        return false;
+    }
+    // return only non-null headers (omit placemarker nulls)
+    getHeaders() {
+        const nonNullHeaders = {};
+        for (const [key, value] of Object.entries(this._header)) {
+            if (value !== null) {
+                nonNullHeaders[key] = value;
+            }
+        }
+        return nonNullHeaders;
+    }
+    loadPgn(pgn, { strict = false, newlineChar = '\r?\n', } = {}) {
+        // If newlineChar is not the default, replace all instances with \n
+        if (newlineChar !== '\r?\n') {
+            pgn = pgn.replace(new RegExp(newlineChar, 'g'), '\n');
+        }
+        const parsedPgn = peg$parse(pgn);
+        // Put the board in the starting position
+        this.reset();
+        // parse PGN header
+        const headers = parsedPgn.headers;
+        let fen = '';
+        for (const key in headers) {
+            // check to see user is including fen (possibly with wrong tag case)
+            if (key.toLowerCase() === 'fen') {
+                fen = headers[key];
+            }
+            this.header(key, headers[key]);
+        }
+        /*
+         * the permissive parser should attempt to load a fen tag, even if it's the
+         * wrong case and doesn't include a corresponding [SetUp "1"] tag
+         */
+        if (!strict) {
+            if (fen) {
+                this.load(fen, { preserveHeaders: true });
+            }
+        }
+        else {
+            /*
+             * strict parser - load the starting position indicated by [Setup '1']
+             * and [FEN position]
+             */
+            if (headers['SetUp'] === '1') {
+                if (!('FEN' in headers)) {
+                    throw new Error('Invalid PGN: FEN tag must be supplied with SetUp tag');
+                }
+                // don't clear the headers when loading
+                this.load(headers['FEN'], { preserveHeaders: true });
+            }
+        }
+        let node = parsedPgn.root;
+        while (node) {
+            if (node.move) {
+                const move = this._moveFromSan(node.move, strict);
+                if (move == null) {
+                    throw new Error(`Invalid move in PGN: ${node.move}`);
+                }
+                else {
+                    this._makeMove(move);
+                    this._incPositionCount();
+                }
+            }
+            if (node.comment !== undefined) {
+                this._comments[this.fen()] = node.comment;
+            }
+            node = node.variations[0];
+        }
+        /*
+         * Per section 8.2.6 of the PGN spec, the Result tag pair must match match
+         * the termination marker. Only do this when headers are present, but the
+         * result tag is missing
+         */
+        const result = parsedPgn.result;
+        if (result &&
+            Object.keys(this._header).length &&
+            this._header['Result'] !== result) {
+            this.setHeader('Result', result);
+        }
+    }
+    /*
+     * Convert a move from 0x88 coordinates to Standard Algebraic Notation
+     * (SAN)
+     *
+     * @param {boolean} strict Use the strict SAN parser. It will throw errors
+     * on overly disambiguated moves (see below):
+     *
+     * r1bqkbnr/ppp2ppp/2n5/1B1pP3/4P3/8/PPPP2PP/RNBQK1NR b KQkq - 2 4
+     * 4. ... Nge7 is overly disambiguated because the knight on c6 is pinned
+     * 4. ... Ne7 is technically the valid SAN
+     */
+    _moveToSan(move, moves) {
+        let output = '';
+        if (move.flags & BITS.KSIDE_CASTLE) {
+            output = 'O-O';
+        }
+        else if (move.flags & BITS.QSIDE_CASTLE) {
+            output = 'O-O-O';
+        }
+        else if (move.flags & BITS.NULL_MOVE) {
+            return SAN_NULLMOVE;
+        }
+        else {
+            if (move.piece !== PAWN) {
+                const disambiguator = getDisambiguator(move, moves);
+                output += move.piece.toUpperCase() + disambiguator;
+            }
+            if (move.flags & (BITS.CAPTURE | BITS.EP_CAPTURE)) {
+                if (move.piece === PAWN) {
+                    output += algebraic(move.from)[0];
+                }
+                output += 'x';
+            }
+            output += algebraic(move.to);
+            if (move.promotion) {
+                output += '=' + move.promotion.toUpperCase();
+            }
+        }
+        this._makeMove(move);
+        if (this.isCheck()) {
+            if (this.isCheckmate()) {
+                output += '#';
+            }
+            else {
+                output += '+';
+            }
+        }
+        this._undoMove();
+        return output;
+    }
+    // convert a move from Standard Algebraic Notation (SAN) to 0x88 coordinates
+    _moveFromSan(move, strict = false) {
+        // strip off any move decorations: e.g Nf3+?! becomes Nf3
+        let cleanMove = strippedSan(move);
+        if (!strict) {
+            if (cleanMove === '0-0') {
+                cleanMove = 'O-O';
+            }
+            else if (cleanMove === '0-0-0') {
+                cleanMove = 'O-O-O';
+            }
+        }
+        //first implementation of null with a dummy move (black king moves from a8 to a8), maybe this can be implemented better
+        if (cleanMove == SAN_NULLMOVE) {
+            const res = {
+                color: this._turn,
+                from: 0,
+                to: 0,
+                piece: 'k',
+                flags: BITS.NULL_MOVE,
+            };
+            return res;
+        }
+        let pieceType = inferPieceType(cleanMove);
+        let moves = this._moves({ legal: true, piece: pieceType });
+        // strict parser
+        for (let i = 0, len = moves.length; i < len; i++) {
+            if (cleanMove === strippedSan(this._moveToSan(moves[i], moves))) {
+                return moves[i];
+            }
+        }
+        // the strict parser failed
+        if (strict) {
+            return null;
+        }
+        let piece = undefined;
+        let matches = undefined;
+        let from = undefined;
+        let to = undefined;
+        let promotion = undefined;
+        /*
+         * The default permissive (non-strict) parser allows the user to parse
+         * non-standard chess notations. This parser is only run after the strict
+         * Standard Algebraic Notation (SAN) parser has failed.
+         *
+         * When running the permissive parser, we'll run a regex to grab the piece, the
+         * to/from square, and an optional promotion piece. This regex will
+         * parse common non-standard notation like: Pe2-e4, Rc1c4, Qf3xf7,
+         * f7f8q, b1c3
+         *
+         * NOTE: Some positions and moves may be ambiguous when using the permissive
+         * parser. For example, in this position: 6k1/8/8/B7/8/8/8/BN4K1 w - - 0 1,
+         * the move b1c3 may be interpreted as Nc3 or B1c3 (a disambiguated bishop
+         * move). In these cases, the permissive parser will default to the most
+         * basic interpretation (which is b1c3 parsing to Nc3).
+         */
+        let overlyDisambiguated = false;
+        matches = cleanMove.match(/([pnbrqkPNBRQK])?([a-h][1-8])x?-?([a-h][1-8])([qrbnQRBN])?/);
+        if (matches) {
+            piece = matches[1];
+            from = matches[2];
+            to = matches[3];
+            promotion = matches[4];
+            if (from.length == 1) {
+                overlyDisambiguated = true;
+            }
+        }
+        else {
+            /*
+             * The [a-h]?[1-8]? portion of the regex below handles moves that may be
+             * overly disambiguated (e.g. Nge7 is unnecessary and non-standard when
+             * there is one legal knight move to e7). In this case, the value of
+             * 'from' variable will be a rank or file, not a square.
+             */
+            matches = cleanMove.match(/([pnbrqkPNBRQK])?([a-h]?[1-8]?)x?-?([a-h][1-8])([qrbnQRBN])?/);
+            if (matches) {
+                piece = matches[1];
+                from = matches[2];
+                to = matches[3];
+                promotion = matches[4];
+                if (from.length == 1) {
+                    overlyDisambiguated = true;
+                }
+            }
+        }
+        pieceType = inferPieceType(cleanMove);
+        moves = this._moves({
+            legal: true,
+            piece: piece ? piece : pieceType,
+        });
+        if (!to) {
+            return null;
+        }
+        for (let i = 0, len = moves.length; i < len; i++) {
+            if (!from) {
+                // if there is no from square, it could be just 'x' missing from a capture
+                if (cleanMove ===
+                    strippedSan(this._moveToSan(moves[i], moves)).replace('x', '')) {
+                    return moves[i];
+                }
+                // hand-compare move properties with the results from our permissive regex
+            }
+            else if ((!piece || piece.toLowerCase() == moves[i].piece) &&
+                Ox88[from] == moves[i].from &&
+                Ox88[to] == moves[i].to &&
+                (!promotion || promotion.toLowerCase() == moves[i].promotion)) {
+                return moves[i];
+            }
+            else if (overlyDisambiguated) {
+                /*
+                 * SPECIAL CASE: we parsed a move string that may have an unneeded
+                 * rank/file disambiguator (e.g. Nge7).  The 'from' variable will
+                 */
+                const square = algebraic(moves[i].from);
+                if ((!piece || piece.toLowerCase() == moves[i].piece) &&
+                    Ox88[to] == moves[i].to &&
+                    (from == square[0] || from == square[1]) &&
+                    (!promotion || promotion.toLowerCase() == moves[i].promotion)) {
+                    return moves[i];
+                }
+            }
+        }
+        return null;
+    }
+    ascii() {
+        let s = '   +------------------------+\n';
+        for (let i = Ox88.a8; i <= Ox88.h1; i++) {
+            // display the rank
+            if (file(i) === 0) {
+                s += ' ' + '87654321'[rank(i)] + ' |';
+            }
+            if (this._board[i]) {
+                const piece = this._board[i].type;
+                const color = this._board[i].color;
+                const symbol = color === WHITE ? piece.toUpperCase() : piece.toLowerCase();
+                s += ' ' + symbol + ' ';
+            }
+            else {
+                s += ' . ';
+            }
+            if ((i + 1) & 0x88) {
+                s += '|\n';
+                i += 8;
+            }
+        }
+        s += '   +------------------------+\n';
+        s += '     a  b  c  d  e  f  g  h';
+        return s;
+    }
+    perft(depth) {
+        const moves = this._moves({ legal: false });
+        let nodes = 0;
+        const color = this._turn;
+        for (let i = 0, len = moves.length; i < len; i++) {
+            this._makeMove(moves[i]);
+            if (!this._isKingAttacked(color)) {
+                if (depth - 1 > 0) {
+                    nodes += this.perft(depth - 1);
+                }
+                else {
+                    nodes++;
+                }
+            }
+            this._undoMove();
+        }
+        return nodes;
+    }
+    setTurn(color) {
+        if (this._turn == color) {
+            return false;
+        }
+        this.move('--');
+        return true;
+    }
+    turn() {
+        return this._turn;
+    }
+    board() {
+        const output = [];
+        let row = [];
+        for (let i = Ox88.a8; i <= Ox88.h1; i++) {
+            if (this._board[i] == null) {
+                row.push(null);
+            }
+            else {
+                row.push({
+                    square: algebraic(i),
+                    type: this._board[i].type,
+                    color: this._board[i].color,
+                });
+            }
+            if ((i + 1) & 0x88) {
+                output.push(row);
+                row = [];
+                i += 8;
+            }
+        }
+        return output;
+    }
+    squareColor(square) {
+        if (square in Ox88) {
+            const sq = Ox88[square];
+            return (rank(sq) + file(sq)) % 2 === 0 ? 'light' : 'dark';
+        }
+        return null;
+    }
+    history({ verbose = false } = {}) {
+        const reversedHistory = [];
+        const moveHistory = [];
+        while (this._history.length > 0) {
+            reversedHistory.push(this._undoMove());
+        }
+        while (true) {
+            const move = reversedHistory.pop();
+            if (!move) {
+                break;
+            }
+            if (verbose) {
+                moveHistory.push(new Move(this, move));
+            }
+            else {
+                moveHistory.push(this._moveToSan(move, this._moves()));
+            }
+            this._makeMove(move);
+        }
+        return moveHistory;
+    }
+    /*
+     * Keeps track of position occurrence counts for the purpose of repetition
+     * checking. Old positions are removed from the map if their counts are reduced to 0.
+     */
+    _getPositionCount(hash) {
+        return this._positionCount.get(hash) ?? 0;
+    }
+    _incPositionCount() {
+        this._positionCount.set(this._hash, (this._positionCount.get(this._hash) ?? 0) + 1);
+    }
+    _decPositionCount(hash) {
+        const currentCount = this._positionCount.get(hash) ?? 0;
+        if (currentCount === 1) {
+            this._positionCount.delete(hash);
+        }
+        else {
+            this._positionCount.set(hash, currentCount - 1);
+        }
+    }
+    _pruneComments() {
+        const reversedHistory = [];
+        const currentComments = {};
+        const copyComment = (fen) => {
+            if (fen in this._comments) {
+                currentComments[fen] = this._comments[fen];
+            }
+        };
+        while (this._history.length > 0) {
+            reversedHistory.push(this._undoMove());
+        }
+        copyComment(this.fen());
+        while (true) {
+            const move = reversedHistory.pop();
+            if (!move) {
+                break;
+            }
+            this._makeMove(move);
+            copyComment(this.fen());
+        }
+        this._comments = currentComments;
+    }
+    getComment() {
+        return this._comments[this.fen()];
+    }
+    setComment(comment) {
+        this._comments[this.fen()] = comment.replace('{', '[').replace('}', ']');
+    }
+    /**
+     * @deprecated Renamed to `removeComment` for consistency
+     */
+    deleteComment() {
+        return this.removeComment();
+    }
+    removeComment() {
+        const comment = this._comments[this.fen()];
+        delete this._comments[this.fen()];
+        return comment;
+    }
+    getComments() {
+        this._pruneComments();
+        return Object.keys(this._comments).map((fen) => {
+            return { fen: fen, comment: this._comments[fen] };
+        });
+    }
+    /**
+     * @deprecated Renamed to `removeComments` for consistency
+     */
+    deleteComments() {
+        return this.removeComments();
+    }
+    removeComments() {
+        this._pruneComments();
+        return Object.keys(this._comments).map((fen) => {
+            const comment = this._comments[fen];
+            delete this._comments[fen];
+            return { fen: fen, comment: comment };
+        });
+    }
+    setCastlingRights(color, rights) {
+        for (const side of [KING, QUEEN]) {
+            if (rights[side] !== undefined) {
+                if (rights[side]) {
+                    this._castling[color] |= SIDES[side];
+                }
+                else {
+                    this._castling[color] &= ~SIDES[side];
+                }
+            }
+        }
+        this._updateCastlingRights();
+        const result = this.getCastlingRights(color);
+        return ((rights[KING] === undefined || rights[KING] === result[KING]) &&
+            (rights[QUEEN] === undefined || rights[QUEEN] === result[QUEEN]));
+    }
+    getCastlingRights(color) {
+        return {
+            [KING]: (this._castling[color] & SIDES[KING]) !== 0,
+            [QUEEN]: (this._castling[color] & SIDES[QUEEN]) !== 0,
+        };
+    }
+    moveNumber() {
+        return this._moveNumber;
+    }
+}
+
+exports.BISHOP = BISHOP;
+exports.BLACK = BLACK;
+exports.Chess = Chess;
+exports.DEFAULT_POSITION = DEFAULT_POSITION;
+exports.KING = KING;
+exports.KNIGHT = KNIGHT;
+exports.Move = Move;
+exports.PAWN = PAWN;
+exports.QUEEN = QUEEN;
+exports.ROOK = ROOK;
+exports.SEVEN_TAG_ROSTER = SEVEN_TAG_ROSTER;
+exports.SQUARES = SQUARES;
+exports.WHITE = WHITE;
+exports.validateFen = validateFen;
+exports.xoroshiro128 = xoroshiro128;
+
+</script><script>window.Chess=window.exports.Chess;</script><script>window.OPENING_LIBRARY=[{"id":"VzzCf6Vf-6Vz38E9q","title":"Французская защита за чёрных","chapter":"Глава 1","url":"https://lichess.org/study/VzzCf6Vf/6Vz38E9q","lines":[[{"san":"e4","from":"e2","to":"e4"},{"san":"e6","from":"e7","to":"e6"},{"san":"d4","from":"d2","to":"d4"},{"san":"d5","from":"d7","to":"d5"},{"san":"e5","from":"e4","to":"e5"},{"san":"c5","from":"c7","to":"c5"},{"san":"c3","from":"c2","to":"c3"},{"san":"Nc6","from":"b8","to":"c6"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"Qb6","from":"d8","to":"b6"},{"san":"Be2","from":"f1","to":"e2"},{"san":"Nge7","from":"g8","to":"e7"},{"san":"O-O","from":"e1","to":"g1"},{"san":"cxd4","from":"c5","to":"d4"},{"san":"cxd4","from":"c3","to":"d4"},{"san":"Nf5","from":"e7","to":"f5"}],[{"san":"e4","from":"e2","to":"e4"},{"san":"e6","from":"e7","to":"e6"},{"san":"d4","from":"d2","to":"d4"},{"san":"d5","from":"d7","to":"d5"},{"san":"e5","from":"e4","to":"e5"},{"san":"c5","from":"c7","to":"c5"},{"san":"c3","from":"c2","to":"c3"},{"san":"Nc6","from":"b8","to":"c6"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"Qb6","from":"d8","to":"b6"},{"san":"Bd3","from":"f1","to":"d3"},{"san":"Bd7","from":"c8","to":"d7"},{"san":"Bc2","from":"d3","to":"c2"},{"san":"cxd4","from":"c5","to":"d4"},{"san":"cxd4","from":"c3","to":"d4"},{"san":"Nb4","from":"c6","to":"b4"},{"san":"Bb3","from":"c2","to":"b3"},{"san":"Qa6","from":"b6","to":"a6"}],[{"san":"e4","from":"e2","to":"e4"},{"san":"e6","from":"e7","to":"e6"},{"san":"d4","from":"d2","to":"d4"},{"san":"d5","from":"d7","to":"d5"},{"san":"e5","from":"e4","to":"e5"},{"san":"c5","from":"c7","to":"c5"},{"san":"c3","from":"c2","to":"c3"},{"san":"Nc6","from":"b8","to":"c6"},{"san":"Bb5","from":"f1","to":"b5"},{"san":"Qb6","from":"d8","to":"b6"},{"san":"Bxc6+","from":"b5","to":"c6"},{"san":"bxc6","from":"b7","to":"c6"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"Ba6","from":"c8","to":"a6"}],[{"san":"e4","from":"e2","to":"e4"},{"san":"e6","from":"e7","to":"e6"},{"san":"d4","from":"d2","to":"d4"},{"san":"d5","from":"d7","to":"d5"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"dxe4","from":"d5","to":"e4"},{"san":"Nxe4","from":"c3","to":"e4"},{"san":"Nd7","from":"b8","to":"d7"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"Ngf6","from":"g8","to":"f6"},{"san":"Nxf6+","from":"e4","to":"f6"},{"san":"Nxf6","from":"d7","to":"f6"},{"san":"Bd3","from":"f1","to":"d3"},{"san":"b6","from":"b7","to":"b6"},{"san":"O-O","from":"e1","to":"g1"},{"san":"Bb7","from":"c8","to":"b7"},{"san":"c3","from":"c2","to":"c3"},{"san":"Be7","from":"f8","to":"e7"},{"san":"Qe2","from":"d1","to":"e2"},{"san":"O-O","from":"e8","to":"g8"}],[{"san":"e4","from":"e2","to":"e4"},{"san":"e6","from":"e7","to":"e6"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"d5","from":"d7","to":"d5"},{"san":"exd5","from":"e4","to":"d5"},{"san":"exd5","from":"e6","to":"d5"},{"san":"d4","from":"d2","to":"d4"},{"san":"Bd6","from":"f8","to":"d6"},{"san":"Bd3","from":"f1","to":"d3"},{"san":"Ne7","from":"g8","to":"e7"},{"san":"O-O","from":"e1","to":"g1"},{"san":"O-O","from":"e8","to":"g8"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"c6","from":"c7","to":"c6"},{"san":"Re1","from":"f1","to":"e1"},{"san":"Bf5","from":"c8","to":"f5"}]],"studyId":"VzzCf6Vf","pgn":"data:application/x-chess-pgn;charset=utf-8,%5BEvent%20%22%D0%A4%D1%80%D0%B0%D0%BD%D1%86%D1%83%D0%B7%D1%81%D0%BA%D0%B0%D1%8F%20%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%B0%20%D0%B7%D0%B0%20%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D1%85%3A%20%D0%93%D0%BB%D0%B0%D0%B2%D0%B0%201%22%5D%0A%5BDate%20%222021.01.31%22%5D%0A%5BResult%20%22*%22%5D%0A%5BVariant%20%22Standard%22%5D%0A%5BECO%20%22C02%22%5D%0A%5BOpening%20%22French%20Defense%3A%20Advance%20Variation%2C%20Paulsen%20Attack%22%5D%0A%5BStudyName%20%22%D0%A4%D1%80%D0%B0%D0%BD%D1%86%D1%83%D0%B7%D1%81%D0%BA%D0%B0%D1%8F%20%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%B0%20%D0%B7%D0%B0%20%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D1%85%22%5D%0A%5BChapterName%20%22%D0%93%D0%BB%D0%B0%D0%B2%D0%B0%201%22%5D%0A%5BChapterURL%20%22https%3A%2F%2Flichess.org%2Fstudy%2FVzzCf6Vf%2F6Vz38E9q%22%5D%0A%5BAnnotator%20%22https%3A%2F%2Flichess.org%2F%40%2FEgor-Kovalev%22%5D%0A%5BUTCDate%20%222021.01.31%22%5D%0A%5BUTCTime%20%2216%3A39%3A31%22%5D%0A%0A1.%20e4%20e6%202.%20d4%20(2.%20Nf3%20%7B%20%5B%25csl%20Gd5%5D%20%7D%202...%20d5%203.%20exd5%20exd5%204.%20d4%20%7B%20%5B%25cal%20Gf8e7%2CGe7d6%2CGg8f6%2CGg8e7%2CGc7c6%5D%20%7D%204...%20Bd6%205.%20Bd3%20%7B%20%5B%25cal%20Gg8f6%2CGg8e7%5D%20%7D%205...%20Ne7%206.%20O-O%20O-O%207.%20Nc3%20c6%20%7B%20%5B%25csl%20Gc6%5D%5B%25cal%20Gb7c6%2CGc6d5%5D%20%7D%208.%20Re1%20%7B%20%5B%25csl%20Gb7%5D%20%7D%208...%20Bf5)%202...%20d5%203.%20e5%20(3.%20Nc3%20%7B%20%5B%25csl%20Gd2%2CGe4%5D%20%7D%203...%20dxe4%204.%20Nxe4%20Nd7%20%7B%20%5B%25csl%20Gd7%2CGf6%5D%5B%25cal%20Gg8f6%5D%20%7D%205.%20Nf3%20Ngf6%206.%20Nxf6%2B%20Nxf6%207.%20Bd3%20b6%208.%20O-O%20Bb7%20%7B%20%5B%25cal%20Gb7h1%5D%20%7D%209.%20c3%20%7B%20%5B%25csl%20Gd6%5D%5B%25cal%20Gc1g5%2CGf8e7%5D%20%7D%209...%20Be7%2010.%20Qe2%20O-O%20%7B%20%5B%25cal%20Gd8d5%2CGb7g2%2CGc7c5%5D%20%7D)%203...%20c5%20%7B%20%5B%25csl%20Gd4%2CGe5%5D%20%7D%204.%20c3%20Nc6%205.%20Nf3%20(5.%20Bb5%20Qb6%206.%20Bxc6%2B%20bxc6%20%7B%20%5B%25cal%20Gc8a6%2CGa6f1%5D%20%7D%207.%20Nf3%20Ba6%20%7B%20%5B%25cal%20Gc5d4%2CGc6c5%5D%20%7D)%205...%20Qb6%20%7B%20%5B%25csl%20Gd4%2CGb2%5D%20%7D%206.%20Be2%20(6.%20Bd3%20Bd7%20%7B%20%5B%25cal%20Gc5d4%5D%20%7D%207.%20Bc2%20%7B%20%5B%25cal%20Gc2h7%5D%20%7D%207...%20cxd4%208.%20cxd4%20Nb4%20%7B%20%5B%25cal%20Gb4c2%5D%20%7D%209.%20Bb3%20Qa6%20%7B%20%5B%25csl%20Gd3%5D%5B%25cal%20Ga6f1%5D%20%7D)%206...%20Nge7%207.%20O-O%20cxd4%208.%20cxd4%20Nf5%20%7B%20%5B%25csl%20Gd4%2CGb2%5D%5B%25cal%20Gc1e3%5D%20%7D%20*%0A%0A%0A"},{"id":"74hxrQk7-pkoQtoVo","studyId":"74hxrQk7","title":"Новоиндийская защита","chapter":"Глава 1","url":"https://lichess.org/study/74hxrQk7/pkoQtoVo","pgn":"data:application/x-chess-pgn;charset=utf-8,%5BEvent%20%22%D0%9D%D0%BE%D0%B2%D0%BE%D0%B8%D0%BD%D0%B4%D0%B8%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%B0%3A%20%D0%93%D0%BB%D0%B0%D0%B2%D0%B0%201%22%5D%0A%5BDate%20%222021.03.18%22%5D%0A%5BResult%20%22*%22%5D%0A%5BVariant%20%22Standard%22%5D%0A%5BECO%20%22E12%22%5D%0A%5BOpening%20%22Queen's%20Indian%20Defense%3A%20Kasparov%20Variation%22%5D%0A%5BStudyName%20%22%D0%9D%D0%BE%D0%B2%D0%BE%D0%B8%D0%BD%D0%B4%D0%B8%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%B0%22%5D%0A%5BChapterName%20%22%D0%93%D0%BB%D0%B0%D0%B2%D0%B0%201%22%5D%0A%5BChapterURL%20%22https%3A%2F%2Flichess.org%2Fstudy%2F74hxrQk7%2FpkoQtoVo%22%5D%0A%5BAnnotator%20%22https%3A%2F%2Flichess.org%2F%40%2FEgor-Kovalev%22%5D%0A%5BUTCDate%20%222021.03.18%22%5D%0A%5BUTCTime%20%2214%3A49%3A13%22%5D%0A%0A1.%20d4%20e6%20%7B%20%5B%25csl%20Ge6%5D%20%7D%202.%20c4%20Nf6%20%7B%20%5B%25csl%20Ge4%5D%5B%25cal%20Gf6e4%5D%20%7D%203.%20Nf3%20b6%204.%20Nc3%20(4.%20a3%20Bb7%205.%20Nc3%20Be7%206.%20Qc2%20%7B%20%5B%25csl%20Ge4%5D%5B%25cal%20Gc2e4%5D%20%7D%206...%20d5%207.%20cxd5%20Nxd5%208.%20e4%20Nxc3%209.%20bxc3%20O-O%2010.%20Bd3%20c5%2011.%20O-O%20Nc6%2012.%20Bb2%20Rc8)%204...%20Bb7%20%7B%20%5B%25cal%20Gb7e4%5D%20%7D%205.%20Bf4%20(5.%20Bg5%20%7B%20%5B%25cal%20Gf8b4%5D%20%7D%205...%20Be7%206.%20e3%20O-O%207.%20Bd3%20d5%208.%20O-O%20Nbd7%209.%20Rc1%20c5%20%7B%20%5B%25cal%20Gd7c5%2CGf6d5%2CGa8c8%2CGf8d8%5D%20%7D%2010.%20cxd5%20Nxd5)%205...%20Bb4%206.%20e3%20O-O%207.%20Bd3%20Ne4%208.%20Qc2%20f5%20%7B%20%5B%25cal%20Gb7h1%2CGg7g5%2CGh7h5%5D%20%7D%20*%0A","lines":[[{"san":"d4","from":"d2","to":"d4"},{"san":"e6","from":"e7","to":"e6"},{"san":"c4","from":"c2","to":"c4"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"b6","from":"b7","to":"b6"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"Bb7","from":"c8","to":"b7"},{"san":"Bf4","from":"c1","to":"f4"},{"san":"Bb4","from":"f8","to":"b4"},{"san":"e3","from":"e2","to":"e3"},{"san":"O-O","from":"e8","to":"g8"},{"san":"Bd3","from":"f1","to":"d3"},{"san":"Ne4","from":"f6","to":"e4"},{"san":"Qc2","from":"d1","to":"c2"},{"san":"f5","from":"f7","to":"f5"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"e6","from":"e7","to":"e6"},{"san":"c4","from":"c2","to":"c4"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"b6","from":"b7","to":"b6"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"Bb7","from":"c8","to":"b7"},{"san":"Bg5","from":"c1","to":"g5"},{"san":"Be7","from":"f8","to":"e7"},{"san":"e3","from":"e2","to":"e3"},{"san":"O-O","from":"e8","to":"g8"},{"san":"Bd3","from":"f1","to":"d3"},{"san":"d5","from":"d7","to":"d5"},{"san":"O-O","from":"e1","to":"g1"},{"san":"Nbd7","from":"b8","to":"d7"},{"san":"Rc1","from":"a1","to":"c1"},{"san":"c5","from":"c7","to":"c5"},{"san":"cxd5","from":"c4","to":"d5"},{"san":"Nxd5","from":"f6","to":"d5"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"e6","from":"e7","to":"e6"},{"san":"c4","from":"c2","to":"c4"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"b6","from":"b7","to":"b6"},{"san":"a3","from":"a2","to":"a3"},{"san":"Bb7","from":"c8","to":"b7"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"Be7","from":"f8","to":"e7"},{"san":"Qc2","from":"d1","to":"c2"},{"san":"d5","from":"d7","to":"d5"},{"san":"cxd5","from":"c4","to":"d5"},{"san":"Nxd5","from":"f6","to":"d5"},{"san":"e4","from":"e2","to":"e4"},{"san":"Nxc3","from":"d5","to":"c3"},{"san":"bxc3","from":"b2","to":"c3"},{"san":"O-O","from":"e8","to":"g8"},{"san":"Bd3","from":"f1","to":"d3"},{"san":"c5","from":"c7","to":"c5"},{"san":"O-O","from":"e1","to":"g1"},{"san":"Nc6","from":"b8","to":"c6"},{"san":"Bb2","from":"c1","to":"b2"},{"san":"Rc8","from":"a8","to":"c8"}]]},{"id":"74hxrQk7-pHZxw4OS","studyId":"74hxrQk7","title":"Новоиндийская защита","chapter":"Глава 2","url":"https://lichess.org/study/74hxrQk7/pHZxw4OS","pgn":"data:application/x-chess-pgn;charset=utf-8,%5BEvent%20%22%D0%9D%D0%BE%D0%B2%D0%BE%D0%B8%D0%BD%D0%B4%D0%B8%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%B0%3A%20%D0%93%D0%BB%D0%B0%D0%B2%D0%B0%202%22%5D%0A%5BDate%20%222021.03.18%22%5D%0A%5BResult%20%22*%22%5D%0A%5BVariant%20%22Standard%22%5D%0A%5BECO%20%22E43%22%5D%0A%5BOpening%20%22Nimzo-Indian%20Defense%3A%20St.%20Petersburg%20Variation%22%5D%0A%5BStudyName%20%22%D0%9D%D0%BE%D0%B2%D0%BE%D0%B8%D0%BD%D0%B4%D0%B8%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%B0%22%5D%0A%5BChapterName%20%22%D0%93%D0%BB%D0%B0%D0%B2%D0%B0%202%22%5D%0A%5BChapterURL%20%22https%3A%2F%2Flichess.org%2Fstudy%2F74hxrQk7%2FpHZxw4OS%22%5D%0A%5BAnnotator%20%22https%3A%2F%2Flichess.org%2F%40%2FEgor-Kovalev%22%5D%0A%5BUTCDate%20%222021.03.18%22%5D%0A%5BUTCTime%20%2214%3A52%3A12%22%5D%0A%0A1.%20d4%20e6%202.%20c4%20Nf6%203.%20Nc3%20Bb4%204.%20Nf3%20(4.%20Qc2%20%7B%20%5B%25cal%20Gc2e4%2CGe2e4%5D%20%7D%204...%20d5%205.%20cxd5%20Qxd5%20%7B%20%5B%25csl%20Gd4%5D%20%7D%206.%20Nf3%20c5%207.%20Bd2%20Bxc3%208.%20Bxc3%20(8.%20bxc3%20O-O%209.%20e3%20b6%2010.%20c4%20Qc6%2011.%20Be2%20Bb7)%208...%20Nc6%209.%20dxc5%20(9.%20Rd1%20Nb4%2010.%20Bxb4%20cxb4)%209...%20Qxc5)%20(4.%20f3%20%7B%20%5B%25cal%20Ge2e4%5D%20%7D%204...%20d5%205.%20a3%20Bxc3%2B%206.%20bxc3%20O-O%207.%20cxd5%20exd5%208.%20e3%20b6%20%7B%20%5B%25csl%20Gc1%2CGe3%2CGc3%2CGa3%5D%5B%25cal%20Gc8a6%5D%20%7D%209.%20Bd3%20Ba6%2010.%20Bxa6%20Nxa6%2011.%20Qd3%20Nb8%2012.%20Ne2%20Re8%2013.%20O-O%20c5%2014.%20Ng3%20Nc6%20%7B%20%5B%25csl%20Gd4%5D%5B%25cal%20Ge3e4%2CGc5d4%5D%20%7D)%204...%20b6%205.%20e3%20(5.%20Bg5%20Bb7%206.%20e3%20h6%207.%20Bh4%20g5%208.%20Bg3%20Ne4%209.%20Qc2%20d6%2010.%20Bd3%20Bxc3%2B%2011.%20bxc3%20f5%20%7B%20%5B%25csl%20Gh6%2CGg5%2CGf5%2CGe6%5D%5B%25cal%20Gh6h5%2CGh5h4%2CGh2h3%2CGe4g3%2CGf2g3%5D%20%7D%2012.%20O-O%20Nd7%2013.%20Rfe1%20Qf6%20%7B%20%5B%25cal%20Gh6h5%2CGh5h4%2CGe8c8%5D%20%7D)%205...%20Bb7%206.%20Bd3%20(6.%20a3%20Bxc3%2B%207.%20bxc3%20O-O%208.%20Bd3%20Ne4%209.%20O-O%20f5%20%7B%20%5B%25cal%20Gb7e4%2CGg7g5%2CGg5g4%2CGf8f6%2CGf6h6%2CGd7d6%2CGb8d7%5D%20%7D)%206...%20O-O%207.%20O-O%20Bxc3%208.%20bxc3%20d6%209.%20Bd2%20Nbd7%2010.%20a4%20e5%20%7B%20%5B%25cal%20Ge5e4%5D%20%7D%20*%0A","lines":[[{"san":"d4","from":"d2","to":"d4"},{"san":"e6","from":"e7","to":"e6"},{"san":"c4","from":"c2","to":"c4"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"Bb4","from":"f8","to":"b4"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"b6","from":"b7","to":"b6"},{"san":"e3","from":"e2","to":"e3"},{"san":"Bb7","from":"c8","to":"b7"},{"san":"Bd3","from":"f1","to":"d3"},{"san":"O-O","from":"e8","to":"g8"},{"san":"O-O","from":"e1","to":"g1"},{"san":"Bxc3","from":"b4","to":"c3"},{"san":"bxc3","from":"b2","to":"c3"},{"san":"d6","from":"d7","to":"d6"},{"san":"Bd2","from":"c1","to":"d2"},{"san":"Nbd7","from":"b8","to":"d7"},{"san":"a4","from":"a2","to":"a4"},{"san":"e5","from":"e6","to":"e5"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"e6","from":"e7","to":"e6"},{"san":"c4","from":"c2","to":"c4"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"Bb4","from":"f8","to":"b4"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"b6","from":"b7","to":"b6"},{"san":"e3","from":"e2","to":"e3"},{"san":"Bb7","from":"c8","to":"b7"},{"san":"a3","from":"a2","to":"a3"},{"san":"Bxc3+","from":"b4","to":"c3"},{"san":"bxc3","from":"b2","to":"c3"},{"san":"O-O","from":"e8","to":"g8"},{"san":"Bd3","from":"f1","to":"d3"},{"san":"Ne4","from":"f6","to":"e4"},{"san":"O-O","from":"e1","to":"g1"},{"san":"f5","from":"f7","to":"f5"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"e6","from":"e7","to":"e6"},{"san":"c4","from":"c2","to":"c4"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"Bb4","from":"f8","to":"b4"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"b6","from":"b7","to":"b6"},{"san":"Bg5","from":"c1","to":"g5"},{"san":"Bb7","from":"c8","to":"b7"},{"san":"e3","from":"e2","to":"e3"},{"san":"h6","from":"h7","to":"h6"},{"san":"Bh4","from":"g5","to":"h4"},{"san":"g5","from":"g7","to":"g5"},{"san":"Bg3","from":"h4","to":"g3"},{"san":"Ne4","from":"f6","to":"e4"},{"san":"Qc2","from":"d1","to":"c2"},{"san":"d6","from":"d7","to":"d6"},{"san":"Bd3","from":"f1","to":"d3"},{"san":"Bxc3+","from":"b4","to":"c3"},{"san":"bxc3","from":"b2","to":"c3"},{"san":"f5","from":"f7","to":"f5"},{"san":"O-O","from":"e1","to":"g1"},{"san":"Nd7","from":"b8","to":"d7"},{"san":"Rfe1","from":"f1","to":"e1"},{"san":"Qf6","from":"d8","to":"f6"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"e6","from":"e7","to":"e6"},{"san":"c4","from":"c2","to":"c4"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"Bb4","from":"f8","to":"b4"},{"san":"Qc2","from":"d1","to":"c2"},{"san":"d5","from":"d7","to":"d5"},{"san":"cxd5","from":"c4","to":"d5"},{"san":"Qxd5","from":"d8","to":"d5"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"c5","from":"c7","to":"c5"},{"san":"Bd2","from":"c1","to":"d2"},{"san":"Bxc3","from":"b4","to":"c3"},{"san":"Bxc3","from":"d2","to":"c3"},{"san":"Nc6","from":"b8","to":"c6"},{"san":"dxc5","from":"d4","to":"c5"},{"san":"Qxc5","from":"d5","to":"c5"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"e6","from":"e7","to":"e6"},{"san":"c4","from":"c2","to":"c4"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"Bb4","from":"f8","to":"b4"},{"san":"Qc2","from":"d1","to":"c2"},{"san":"d5","from":"d7","to":"d5"},{"san":"cxd5","from":"c4","to":"d5"},{"san":"Qxd5","from":"d8","to":"d5"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"c5","from":"c7","to":"c5"},{"san":"Bd2","from":"c1","to":"d2"},{"san":"Bxc3","from":"b4","to":"c3"},{"san":"Bxc3","from":"d2","to":"c3"},{"san":"Nc6","from":"b8","to":"c6"},{"san":"Rd1","from":"a1","to":"d1"},{"san":"Nb4","from":"c6","to":"b4"},{"san":"Bxb4","from":"c3","to":"b4"},{"san":"cxb4","from":"c5","to":"b4"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"e6","from":"e7","to":"e6"},{"san":"c4","from":"c2","to":"c4"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"Bb4","from":"f8","to":"b4"},{"san":"Qc2","from":"d1","to":"c2"},{"san":"d5","from":"d7","to":"d5"},{"san":"cxd5","from":"c4","to":"d5"},{"san":"Qxd5","from":"d8","to":"d5"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"c5","from":"c7","to":"c5"},{"san":"Bd2","from":"c1","to":"d2"},{"san":"Bxc3","from":"b4","to":"c3"},{"san":"bxc3","from":"b2","to":"c3"},{"san":"O-O","from":"e8","to":"g8"},{"san":"e3","from":"e2","to":"e3"},{"san":"b6","from":"b7","to":"b6"},{"san":"c4","from":"c3","to":"c4"},{"san":"Qc6","from":"d5","to":"c6"},{"san":"Be2","from":"f1","to":"e2"},{"san":"Bb7","from":"c8","to":"b7"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"e6","from":"e7","to":"e6"},{"san":"c4","from":"c2","to":"c4"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"Bb4","from":"f8","to":"b4"},{"san":"f3","from":"f2","to":"f3"},{"san":"d5","from":"d7","to":"d5"},{"san":"a3","from":"a2","to":"a3"},{"san":"Bxc3+","from":"b4","to":"c3"},{"san":"bxc3","from":"b2","to":"c3"},{"san":"O-O","from":"e8","to":"g8"},{"san":"cxd5","from":"c4","to":"d5"},{"san":"exd5","from":"e6","to":"d5"},{"san":"e3","from":"e2","to":"e3"},{"san":"b6","from":"b7","to":"b6"},{"san":"Bd3","from":"f1","to":"d3"},{"san":"Ba6","from":"c8","to":"a6"},{"san":"Bxa6","from":"d3","to":"a6"},{"san":"Nxa6","from":"b8","to":"a6"},{"san":"Qd3","from":"d1","to":"d3"},{"san":"Nb8","from":"a6","to":"b8"},{"san":"Ne2","from":"g1","to":"e2"},{"san":"Re8","from":"f8","to":"e8"},{"san":"O-O","from":"e1","to":"g1"},{"san":"c5","from":"c7","to":"c5"},{"san":"Ng3","from":"e2","to":"g3"},{"san":"Nc6","from":"b8","to":"c6"}]]},{"id":"74hxrQk7-KXeQ6arj","studyId":"74hxrQk7","title":"Новоиндийская защита","chapter":"Глава 3","url":"https://lichess.org/study/74hxrQk7/KXeQ6arj","pgn":"data:application/x-chess-pgn;charset=utf-8,%5BEvent%20%22%D0%9D%D0%BE%D0%B2%D0%BE%D0%B8%D0%BD%D0%B4%D0%B8%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%B0%3A%20%D0%93%D0%BB%D0%B0%D0%B2%D0%B0%203%22%5D%0A%5BDate%20%222022.05.23%22%5D%0A%5BResult%20%22*%22%5D%0A%5BVariant%20%22Standard%22%5D%0A%5BECO%20%22E00%22%5D%0A%5BOpening%20%22Catalan%20Opening%22%5D%0A%5BStudyName%20%22%D0%9D%D0%BE%D0%B2%D0%BE%D0%B8%D0%BD%D0%B4%D0%B8%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%B0%22%5D%0A%5BChapterName%20%22%D0%93%D0%BB%D0%B0%D0%B2%D0%B0%203%22%5D%0A%5BChapterURL%20%22https%3A%2F%2Flichess.org%2Fstudy%2F74hxrQk7%2FKXeQ6arj%22%5D%0A%5BAnnotator%20%22https%3A%2F%2Flichess.org%2F%40%2FEgor-Kovalev%22%5D%0A%5BUTCDate%20%222022.05.23%22%5D%0A%5BUTCTime%20%2207%3A45%3A19%22%5D%0A%0A1.%20d4%20(1.%20c4%20e6%202.%20Nc3%20b6%203.%20e4%20Bb7%204.%20Nf3%20Bb4%20%7B%20%5B%25csl%20Ge4%5D%20%7D%205.%20Bd3%20Ne7%206.%20O-O%20O-O%207.%20Bc2%20f5%20%7B%20%5B%25cal%20Gb7h1%5D%20%7D%208.%20exf5%20Nxf5%209.%20d4%20Bxf3%2010.%20Qxf3%20%7B%20%5B%25cal%20Gf3a8%5D%20%7D%2010...%20Nc6)%201...%20e6%20%202.%20c4%20(2.%20Nc3%20%7B%20%5B%25cal%20Gg8f6%2CGe2e4%5D%20%7D%202...%20d5%20%7B%20%5B%25cal%20Gd5e4%5D%20%7D%203.%20Bf4%20(3.%20e4%20dxe4)%203...%20Bb4%204.%20a3%20Bxc3%2B%205.%20bxc3%20Nf6%20%7B%20%5B%25csl%20Gf1%2CGa6%5D%5B%25cal%20Gb7b6%2CGc8a6%5D%20%7D)%202...%20Nf6%203.%20g3%20%7B%20%5B%25cal%20Gb7b6%2CGf1g2%5D%20%7D%203...%20b6%204.%20Bg2%20d5%205.%20Nf3%20Bb7%206.%20O-O%20(6.%20cxd5%20Nxd5%207.%20O-O%20%7B%20%5B%25cal%20Gb8d7%5D%20%7D%207...%20Nd7%208.%20Nc3%20(8.%20e4%20N5f6%20%7B%20%5B%25csl%20Ge4%2CGd4%5D%20%7D%209.%20e5%20Nd5)%208...%20Be7%209.%20Nxd5%20Bxd5)%206...%20dxc4%20%7B%20%5B%25cal%20Gb7h1%5D%20%7D%207.%20Qa4%2B%20Nbd7%208.%20Qxc4%20c5%20%7B%20%5B%25cal%20Ga8c8%2CGd4c5%2CGf8c5%5D%20%7D%209.%20Rd1%20Rc8%20%7B%20%5B%25cal%20Gc5d4%5D%20%7D%2010.%20dxc5%20Bxc5%20%7B%20%5B%25cal%20Gc5f2%5D%20%7D%20*%0A","lines":[[{"san":"d4","from":"d2","to":"d4"},{"san":"e6","from":"e7","to":"e6"},{"san":"c4","from":"c2","to":"c4"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"g3","from":"g2","to":"g3"},{"san":"b6","from":"b7","to":"b6"},{"san":"Bg2","from":"f1","to":"g2"},{"san":"d5","from":"d7","to":"d5"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"Bb7","from":"c8","to":"b7"},{"san":"O-O","from":"e1","to":"g1"},{"san":"dxc4","from":"d5","to":"c4"},{"san":"Qa4+","from":"d1","to":"a4"},{"san":"Nbd7","from":"b8","to":"d7"},{"san":"Qxc4","from":"a4","to":"c4"},{"san":"c5","from":"c7","to":"c5"},{"san":"Rd1","from":"f1","to":"d1"},{"san":"Rc8","from":"a8","to":"c8"},{"san":"dxc5","from":"d4","to":"c5"},{"san":"Bxc5","from":"f8","to":"c5"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"e6","from":"e7","to":"e6"},{"san":"c4","from":"c2","to":"c4"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"g3","from":"g2","to":"g3"},{"san":"b6","from":"b7","to":"b6"},{"san":"Bg2","from":"f1","to":"g2"},{"san":"d5","from":"d7","to":"d5"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"Bb7","from":"c8","to":"b7"},{"san":"cxd5","from":"c4","to":"d5"},{"san":"Nxd5","from":"f6","to":"d5"},{"san":"O-O","from":"e1","to":"g1"},{"san":"Nd7","from":"b8","to":"d7"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"Be7","from":"f8","to":"e7"},{"san":"Nxd5","from":"c3","to":"d5"},{"san":"Bxd5","from":"b7","to":"d5"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"e6","from":"e7","to":"e6"},{"san":"c4","from":"c2","to":"c4"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"g3","from":"g2","to":"g3"},{"san":"b6","from":"b7","to":"b6"},{"san":"Bg2","from":"f1","to":"g2"},{"san":"d5","from":"d7","to":"d5"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"Bb7","from":"c8","to":"b7"},{"san":"cxd5","from":"c4","to":"d5"},{"san":"Nxd5","from":"f6","to":"d5"},{"san":"O-O","from":"e1","to":"g1"},{"san":"Nd7","from":"b8","to":"d7"},{"san":"e4","from":"e2","to":"e4"},{"san":"N5f6","from":"d5","to":"f6"},{"san":"e5","from":"e4","to":"e5"},{"san":"Nd5","from":"f6","to":"d5"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"e6","from":"e7","to":"e6"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"d5","from":"d7","to":"d5"},{"san":"Bf4","from":"c1","to":"f4"},{"san":"Bb4","from":"f8","to":"b4"},{"san":"a3","from":"a2","to":"a3"},{"san":"Bxc3+","from":"b4","to":"c3"},{"san":"bxc3","from":"b2","to":"c3"},{"san":"Nf6","from":"g8","to":"f6"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"e6","from":"e7","to":"e6"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"d5","from":"d7","to":"d5"},{"san":"e4","from":"e2","to":"e4"},{"san":"dxe4","from":"d5","to":"e4"}],[{"san":"c4","from":"c2","to":"c4"},{"san":"e6","from":"e7","to":"e6"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"b6","from":"b7","to":"b6"},{"san":"e4","from":"e2","to":"e4"},{"san":"Bb7","from":"c8","to":"b7"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"Bb4","from":"f8","to":"b4"},{"san":"Bd3","from":"f1","to":"d3"},{"san":"Ne7","from":"g8","to":"e7"},{"san":"O-O","from":"e1","to":"g1"},{"san":"O-O","from":"e8","to":"g8"},{"san":"Bc2","from":"d3","to":"c2"},{"san":"f5","from":"f7","to":"f5"},{"san":"exf5","from":"e4","to":"f5"},{"san":"Nxf5","from":"e7","to":"f5"},{"san":"d4","from":"d2","to":"d4"},{"san":"Bxf3","from":"b7","to":"f3"},{"san":"Qxf3","from":"d1","to":"f3"},{"san":"Nc6","from":"b8","to":"c6"}]]},{"id":"cbgAvVjL-x6eE8Lg1","studyId":"cbgAvVjL","title":"Ферзевый гамбит","chapter":"Глава 1","url":"https://lichess.org/study/cbgAvVjL/x6eE8Lg1","pgn":"data:application/x-chess-pgn;charset=utf-8,%5BEvent%20%22%D0%A4%D0%B5%D1%80%D0%B7%D0%B5%D0%B2%D1%8B%D0%B9%20%D0%B3%D0%B0%D0%BC%D0%B1%D0%B8%D1%82%3A%20%D0%93%D0%BB%D0%B0%D0%B2%D0%B0%201%22%5D%0A%5BDate%20%222021.09.07%22%5D%0A%5BResult%20%22*%22%5D%0A%5BVariant%20%22Standard%22%5D%0A%5BECO%20%22D20%22%5D%0A%5BOpening%20%22Queen's%20Gambit%20Accepted%3A%20Central%20Variation%2C%20Greco%20Variation%22%5D%0A%5BStudyName%20%22%D0%A4%D0%B5%D1%80%D0%B7%D0%B5%D0%B2%D1%8B%D0%B9%20%D0%B3%D0%B0%D0%BC%D0%B1%D0%B8%D1%82%22%5D%0A%5BChapterName%20%22%D0%93%D0%BB%D0%B0%D0%B2%D0%B0%201%22%5D%0A%5BChapterURL%20%22https%3A%2F%2Flichess.org%2Fstudy%2FcbgAvVjL%2Fx6eE8Lg1%22%5D%0A%5BAnnotator%20%22https%3A%2F%2Flichess.org%2F%40%2FEgor-Kovalev%22%5D%0A%5BUTCDate%20%222021.09.07%22%5D%0A%5BUTCTime%20%2218%3A08%3A40%22%5D%0A%0A1.%20d4%20d5%202.%20c4%20%7B%20%5B%25cal%20Gd5c4%2CGe2e4%5D%20%7D%202...%20dxc4%203.%20e4%20%7B%20%5B%25csl%20Gc4%5D%5B%25cal%20Gd4e5%2CGd4c5%2CGe4d5%2CGe4f5%2CGf1c4%5D%20%7D%203...%20b5%20%7B%20%5B%25cal%20Ga2a4%5D%20%7D%20(3...%20Nc6%20%7B%20%5B%25cal%20Gc6d4%5D%20%7D%204.%20Nf3%20Bg4%205.%20d5%20Ne5%20%7B%20%5B%25cal%20Ge5c4%5D%20%7D%206.%20Bf4%20%7B%20%5B%25csl%20Gc4%5D%5B%25cal%20Gf4e5%5D%20%7D%206...%20Nxf3%2B%207.%20gxf3%20%7B%20%5B%25csl%20Gc4%5D%20%7D%207...%20Bd7%208.%20Bxc4%20%7B%20%5B%25cal%20Gh1g1%2CGg1g7%5D%20%7D)%20(3...%20Nf6%20%7B%20%5B%25cal%20Gf6e4%5D%20%7D%204.%20Nc3%20Nc6%20%7B%20%5B%25cal%20Gc6d4%5D%20%7D%205.%20Nf3%20%7B%20%5B%25csl%20Gf1%5D%5B%25cal%20Gf1c4%5D%20%7D)%204.%20a4%20c6%205.%20axb5%20cxb5%206.%20Nc3%20a6%20(6...%20Bd7%207.%20b3%20%7B%20%5B%25cal%20Gb3c4%2CGf1c4%5D%20%7D%207...%20cxb3%208.%20Qxb3%20%7B%20%5B%25csl%20Gb5%5D%20%7D)%207.%20Nxb5%20%7B%20%5B%25cal%20Ga1a8%5D%20%7D%20*%0A","lines":[[{"san":"d4","from":"d2","to":"d4"},{"san":"d5","from":"d7","to":"d5"},{"san":"c4","from":"c2","to":"c4"},{"san":"dxc4","from":"d5","to":"c4"},{"san":"e4","from":"e2","to":"e4"},{"san":"b5","from":"b7","to":"b5"},{"san":"a4","from":"a2","to":"a4"},{"san":"c6","from":"c7","to":"c6"},{"san":"axb5","from":"a4","to":"b5"},{"san":"cxb5","from":"c6","to":"b5"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"a6","from":"a7","to":"a6"},{"san":"Nxb5","from":"c3","to":"b5"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"d5","from":"d7","to":"d5"},{"san":"c4","from":"c2","to":"c4"},{"san":"dxc4","from":"d5","to":"c4"},{"san":"e4","from":"e2","to":"e4"},{"san":"b5","from":"b7","to":"b5"},{"san":"a4","from":"a2","to":"a4"},{"san":"c6","from":"c7","to":"c6"},{"san":"axb5","from":"a4","to":"b5"},{"san":"cxb5","from":"c6","to":"b5"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"Bd7","from":"c8","to":"d7"},{"san":"b3","from":"b2","to":"b3"},{"san":"cxb3","from":"c4","to":"b3"},{"san":"Qxb3","from":"d1","to":"b3"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"d5","from":"d7","to":"d5"},{"san":"c4","from":"c2","to":"c4"},{"san":"dxc4","from":"d5","to":"c4"},{"san":"e4","from":"e2","to":"e4"},{"san":"Nc6","from":"b8","to":"c6"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"Bg4","from":"c8","to":"g4"},{"san":"d5","from":"d4","to":"d5"},{"san":"Ne5","from":"c6","to":"e5"},{"san":"Bf4","from":"c1","to":"f4"},{"san":"Nxf3+","from":"e5","to":"f3"},{"san":"gxf3","from":"g2","to":"f3"},{"san":"Bd7","from":"g4","to":"d7"},{"san":"Bxc4","from":"f1","to":"c4"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"d5","from":"d7","to":"d5"},{"san":"c4","from":"c2","to":"c4"},{"san":"dxc4","from":"d5","to":"c4"},{"san":"e4","from":"e2","to":"e4"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"Nc6","from":"b8","to":"c6"},{"san":"Nf3","from":"g1","to":"f3"}]]},{"id":"cbgAvVjL-xwk4v6c9","studyId":"cbgAvVjL","title":"Ферзевый гамбит","chapter":"Глава 2","url":"https://lichess.org/study/cbgAvVjL/xwk4v6c9","pgn":"data:application/x-chess-pgn;charset=utf-8,%5BEvent%20%22%D0%A4%D0%B5%D1%80%D0%B7%D0%B5%D0%B2%D1%8B%D0%B9%20%D0%B3%D0%B0%D0%BC%D0%B1%D0%B8%D1%82%3A%20%D0%93%D0%BB%D0%B0%D0%B2%D0%B0%202%22%5D%0A%5BDate%20%222021.12.29%22%5D%0A%5BResult%20%22*%22%5D%0A%5BVariant%20%22Standard%22%5D%0A%5BECO%20%22D37%22%5D%0A%5BOpening%20%22Queen's%20Gambit%20Declined%3A%20Harrwitz%20Attack%2C%20Orthodox%20Defense%22%5D%0A%5BStudyName%20%22%D0%A4%D0%B5%D1%80%D0%B7%D0%B5%D0%B2%D1%8B%D0%B9%20%D0%B3%D0%B0%D0%BC%D0%B1%D0%B8%D1%82%22%5D%0A%5BChapterName%20%22%D0%93%D0%BB%D0%B0%D0%B2%D0%B0%202%22%5D%0A%5BChapterURL%20%22https%3A%2F%2Flichess.org%2Fstudy%2FcbgAvVjL%2Fxwk4v6c9%22%5D%0A%5BAnnotator%20%22https%3A%2F%2Flichess.org%2F%40%2FEgor-Kovalev%22%5D%0A%5BUTCDate%20%222021.12.29%22%5D%0A%5BUTCTime%20%2215%3A47%3A27%22%5D%0A%0A1.%20d4%20d5%20(1...%20c5%20%7B%20%5B%25cal%20Gc5d4%2CGe5d4%2CGd4d5%5D%20%7D%202.%20d5%20e6%203.%20c4%20%7B%20%5B%25cal%20Gc4d5%5D%20%7D%203...%20exd5%204.%20cxd5%20d6%205.%20Nc3%20Nf6%206.%20e4)%202.%20c4%20e6%20(2...%20Nf6%20%7B%20%5B%25cal%20Gc8f5%5D%20%7D%203.%20cxd5%20Nxd5%20%7B%20%5B%25cal%20Ge2e4%5D%20%7D%204.%20e4%20Nf6%205.%20Nc3)%203.%20Nc3%20Nf6%204.%20Nf3%20Be7%205.%20Bf4%20O-O%206.%20e3%20c6%207.%20Bd3%20Nbd7%208.%20O-O%20%7B%20%5B%25cal%20Gf1e1%2CGd1c2%2CGa1d1%2CGe3e4%2CGf3e5%2CGa2a3%2CGb2b4%2CGf2f4%2CGd1e2%5D%20%7D%20*%0A","lines":[[{"san":"d4","from":"d2","to":"d4"},{"san":"d5","from":"d7","to":"d5"},{"san":"c4","from":"c2","to":"c4"},{"san":"e6","from":"e7","to":"e6"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"Nf3","from":"g1","to":"f3"},{"san":"Be7","from":"f8","to":"e7"},{"san":"Bf4","from":"c1","to":"f4"},{"san":"O-O","from":"e8","to":"g8"},{"san":"e3","from":"e2","to":"e3"},{"san":"c6","from":"c7","to":"c6"},{"san":"Bd3","from":"f1","to":"d3"},{"san":"Nbd7","from":"b8","to":"d7"},{"san":"O-O","from":"e1","to":"g1"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"d5","from":"d7","to":"d5"},{"san":"c4","from":"c2","to":"c4"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"cxd5","from":"c4","to":"d5"},{"san":"Nxd5","from":"f6","to":"d5"},{"san":"e4","from":"e2","to":"e4"},{"san":"Nf6","from":"d5","to":"f6"},{"san":"Nc3","from":"b1","to":"c3"}],[{"san":"d4","from":"d2","to":"d4"},{"san":"c5","from":"c7","to":"c5"},{"san":"d5","from":"d4","to":"d5"},{"san":"e6","from":"e7","to":"e6"},{"san":"c4","from":"c2","to":"c4"},{"san":"exd5","from":"e6","to":"d5"},{"san":"cxd5","from":"c4","to":"d5"},{"san":"d6","from":"d7","to":"d6"},{"san":"Nc3","from":"b1","to":"c3"},{"san":"Nf6","from":"g8","to":"f6"},{"san":"e4","from":"e2","to":"e4"}]]}];</script><script>(()=>{'use strict';
+const el=id=>document.getElementById(id),library=window.OPENING_LIBRARY,Chess=window.Chess;
+const studyIds=[...new Set(library.map(x=>x.studyId||x.id))];
+let study=library[0],labels=[];
+function variationCount(n){return n+' '+(n%100>=11&&n%100<=14?'вариантов':n%10===1?'вариант':n%10>=2&&n%10<=4?'варианта':'вариантов')}
+function option(select,value,label){const opt=document.createElement('option');opt.value=value;opt.textContent=label;select.append(opt)}
+function makeLabels(chapter){return chapter.lines.map((line,i)=>{if(i===0)return 'Основная линия';const main=chapter.lines[0];const p=line.findIndex((m,n)=>!main[n]||m.san!==main[n].san);const n=p<0?0:p;return 'Вариант '+(i+1)+' · '+(Math.floor(n/2)+1)+(n%2?'...':'.')+line[n].san})}
+function populateLines(){labels=makeLabels(study);el('openingLine').replaceChildren(document.createDocumentFragment());option(el('openingLine'),'all','Все варианты · каждый с начала');study.lines.forEach((line,i)=>option(el('openingLine'),String(i),labels[i]+' · '+Math.ceil(line.length/2)+' ходов'));el('openingLine').value='all'}
+function populateChapters(id){el('openingChapter').replaceChildren(document.createDocumentFragment());library.filter(x=>(x.studyId||x.id)===id).forEach(x=>option(el('openingChapter'),x.id,x.chapter+' · '+variationCount(x.lines.length)));study=library.find(x=>(x.studyId||x.id)===id);el('openingChapter').value=study.id;populateLines()}
+studyIds.forEach(id=>option(el('openingStudy'),id,library.find(x=>(x.studyId||x.id)===id).title));el('openingStudy').value=studyIds[studyIds.length-1];populateChapters(el('openingStudy').value);
+let bothSides=false,studying=false,randomOrder=false;
+function shuffleQueue(queue){for(let i=queue.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[queue[i],queue[j]]=[queue[j],queue[i]]}return queue}
+const isUserTurn=()=>bothSides||game.turn()===el('openingSide').value;
+let lineIndices=[],lineCursor=0,activeLineIndex=0,waitingForNext=false;
+let game=new Chess(),line=[],ply=0,selected=null,running=false,errors=0,hints=0,answers=[],startedAt=null,turnStart=0,timer=null,generation=0,lastMove=null,visible=false,history=[];
+try{const saved=JSON.parse(localStorage.getItem('chess-openings-v1'));if(Array.isArray(saved))history=saved}catch{}
+const fmt=s=>new Intl.DateTimeFormat('ru-RU',{timeZone:'Europe/Moscow',dateStyle:'short',timeStyle:'medium'}).format(new Date(s));
+const pieces={k:'♚\uFE0E',q:'♛\uFE0E',r:'♜\uFE0E',b:'♝\uFE0E',n:'♞\uFE0E',p:'♟\uFE0E'};
+function renderBoard(){const side=el('openingSide').value,frag=document.createDocumentFragment();for(let r=0;r<8;r++)for(let c=0;c<8;c++){const f=side==='w'?c:7-c,rank=side==='w'?8-r:r+1,sq='abcdefgh'[f]+rank,piece=game.get(sq),b=document.createElement('button');b.className='sq'+((f+rank)%2===1?' dark':'')+(piece?.color==='w'?' piece-white':'')+(selected===sq?' selected':'')+((lastMove&&(lastMove.from===sq||lastMove.to===sq))?' lastmove':'');b.textContent=piece?pieces[piece.type]:'';b.setAttribute('aria-label',sq+(piece?' '+(piece.color==='w'?'белая ':'чёрная ')+({p:'пешка',n:'конь',b:'слон',r:'ладья',q:'ферзь',k:'король'})[piece.type]:''));b.onclick=()=>clickSquare(sq);frag.append(b)}el('openingBoard').replaceChildren(frag)}
+function render(){renderBoard();const chapters=library.filter(x=>(x.studyId||x.id)===(study.studyId||study.id));el('openingTitle').textContent=study.title;el('openingLibraryCount').textContent='БИБЛИОТЕКА ДЕБЮТОВ · '+studyIds.length+' СТУДИИ';el('openingChapterInfo').textContent=study.chapter+' · '+variationCount(study.lines.length);el('openingCurrentChapter').textContent=study.title+' → '+study.chapter+' ('+(chapters.indexOf(study)+1)+' из '+chapters.length+')';el('openingSource').href=study.url;el('openingPgn').href=study.pgn;el('openingPgn').download=study.id+'.pgn';el('openingHint').textContent='Все варианты выбранной главы проходят по очереди, каждый с исходной позиции. Тренажёр проверяет ходы по студии; при ошибке попробуйте ещё раз.';const side=el('openingSide').value,total=bothSides?line.length:line.filter((_,i)=>i%2===(side==='w'?0:1)).length;el('openingCount').textContent=answers.filter(x=>x.correct).length+' / '+total;el('openingErrors').textContent=errors;el('openingStudyMode').setAttribute('aria-pressed',String(studying));el('openingStudyMode').classList.toggle('primary',studying);el('openingStudyMode').textContent=studying?'Изучение: включено':'Изучение';el('openingStepControls').hidden=!studying;el('openingBack').disabled=!studying||ply===0;el('openingForward').disabled=!studying||ply>=line.length;el('openingBoth').disabled=studying;el('openingHelp').disabled=!running||!isUserTurn();el('openingBoth').setAttribute('aria-pressed',String(bothSides));el('openingBoth').textContent=bothSides?'За обе стороны: включено':'За обе стороны';el('openingBoth').classList.toggle('primary',bothSides);el('openingSideLabel').textContent=bothSides||studying?'Ориентация доски':'Я играю за';el('openingLine').disabled=randomOrder||(!studying&&(running||waitingForNext));el('openingRandom').setAttribute('aria-pressed',String(randomOrder));el('openingRandom').classList.toggle('primary',randomOrder);el('openingRandom').textContent=randomOrder?'Случайный порядок: включён':'Случайный порядок';el('openingRandomScopeLabel').hidden=!randomOrder;el('openingOrderInfo').textContent=randomOrder?(el('openingRandomScope').value==='study'?'Варианты всех глав этой студии перемешаны.':'Варианты выбранной главы перемешаны.')+' Каждый вариант один раз за проход, всегда с начальной позиции.':'Варианты идут по очереди. Переключение порядка начинает новый проход.';el('openingSide').disabled=!studying&&(running||waitingForNext);el('openingStart').textContent=running||waitingForNext?'Начать заново':(el('openingLine').value==='all'?'Начать все варианты':'Начать вариант');el('openingRepeat').disabled=lineIndices.length===0;el('openingNext').hidden=!waitingForNext;el('openingSequence').textContent=lineIndices.length>1?'Вариант '+(lineCursor+1)+' из '+lineIndices.length+' · '+labels[activeLineIndex]:labels[activeLineIndex];el('openingMoves').textContent=game.history().map((m,i)=>(i%2===0?Math.floor(i/2)+1+'. ':'')+m).join(' ')||'—';el('openingDates').textContent=startedAt?'Начало: '+fmt(startedAt)+' · МСК':'';if(studying){el('openingStatus').textContent='Изучение · '+ply+' / '+line.length+' ходов';el('openingHint').textContent='Листайте ходы белых и чёрных кнопками. Каждое нажатие — один ход одной стороны. Просмотр не записывается как тренировка.';el('openingFeedback').textContent=ply?'Показан ход: '+(Math.floor((ply-1)/2)+1)+(ply%2?'. ':'... ')+line[ply-1].san:'Исходная позиция';el('openingStart').textContent='С начала всей очереди'}el('openingExport').value=report();}
+function schedule(){clearTimeout(timer);if(!running||!visible||document.hidden)return;if(ply>=line.length){finish();return}if(isUserTurn()){turnStart=performance.now();el('openingStatus').textContent='Ваш ход · '+(game.turn()==='w'?'белые':'чёрные');render();return}el('openingStatus').textContent='Ход соперника…';render();const g=generation;timer=setTimeout(()=>{if(g!==generation||!running||!visible)return;lastMove=game.move(line[ply].san);ply++;render();schedule()},550)}
+function resetChapter(){generation++;clearTimeout(timer);running=false;waitingForNext=false;lineIndices=[];lineCursor=0;activeLineIndex=0;line=[];ply=0;selected=null;game=new Chess();errors=0;hints=0;answers=[];startedAt=null;lastMove=null;el('openingStatus').textContent='Готовы начать?';el('openingFeedback').textContent='';render()}
+el('openingStudy').onchange=()=>{populateChapters(el('openingStudy').value);resetChapter();if(studying)start()};el('openingChapter').onchange=()=>{study=library.find(x=>x.id===el('openingChapter').value);populateLines();resetChapter();if(studying)start()};
+function start(){const scope=randomOrder&&el('openingRandomScope').value==='study'?library.filter(x=>(x.studyId||x.id)===(study.studyId||study.id)):[study];lineIndices=scope.flatMap(chapter=>{const indices=randomOrder||el('openingLine').value==='all'?chapter.lines.map((_,i)=>i):[Number(el('openingLine').value)];return indices.map(lineIndex=>({chapterId:chapter.id,lineIndex}))});if(randomOrder)shuffleQueue(lineIndices);lineCursor=0;beginLine()}
+function beginLine(){waitingForNext=false;const task=lineIndices[lineCursor];if(study.id!==task.chapterId){study=library.find(x=>x.id===task.chapterId);el('openingChapter').value=study.id;populateLines()}activeLineIndex=task.lineIndex;generation++;clearTimeout(timer);game=new Chess();line=study.lines[activeLineIndex];ply=0;selected=null;running=!studying;errors=0;hints=0;answers=[];startedAt=studying?null:new Date().toISOString();lastMove=null;el('openingFeedback').textContent='';render();schedule()}
+function clickSquare(sq){if(!running||!isUserTurn()||!visible)return;const piece=game.get(sq);if(piece&&piece.color===game.turn()){selected=selected===sq?null:sq;renderBoard();return}if(!selected)return;const from=selected,expected=line[ply];selected=null;let move;try{const probe=new Chess(game.fen());move=probe.move({from,to:sq,promotion:'q'})}catch{}if(!move){el('openingFeedback').textContent='Такой ход невозможен. Выберите фигуру и клетку ещё раз.';renderBoard();return}const correct=move.from===expected.from&&move.to===expected.to&&move.promotion===expected.promotion;answers.push({ply:ply+1,side:game.turn(),played:move.san,expected:expected.san,correct,ms:Math.round(performance.now()-turnStart),answeredAt:new Date().toISOString()});if(!correct){errors++;el('openingFeedback').textContent='В выбранном варианте другой ход. Попробуйте ещё раз или откройте подсказку.';turnStart=performance.now();render();return}lastMove=game.move(expected.san);ply++;el('openingFeedback').textContent='Верно: '+move.san;render();schedule()}
+function finish(){running=false;waitingForNext=lineCursor+1<lineIndices.length;el('openingStatus').textContent=waitingForNext?'Вариант пройден':(lineIndices.length>1?'Все варианты пройдены':'Вариант пройден');el('openingFeedback').textContent='Все ходы сыграны. '+(errors?'Ошибок: '+errors+'. Повторите вариант позже.':'Без ошибок! Повторите позже для закрепления.');history.push({studyId:study.studyId||study.id,chapterId:study.id,chapter:study.chapter,sourceUrl:study.url,title:study.title,line:labels[activeLineIndex],mode:lineIndices.length>1?'all':'single',sequenceNumber:lineCursor+1,sequenceTotal:lineIndices.length,order:randomOrder?'random':'sequential',randomScope:randomOrder?el('openingRandomScope').value:null,side:bothSides?'both':el('openingSide').value,orientation:el('openingSide').value,startedAt,completedAt:new Date().toISOString(),errors,hints,answers});try{localStorage.setItem('chess-openings-v1',JSON.stringify(history))}catch{el('openingFeedback').textContent+=' Сохранение недоступно — скопируйте результаты.'}render()}
+function report(){const lines=['Тренировка дебютов. Время: МСК (Europe/Moscow).',study.title+' · '+study.chapter,study.url];for(const h of history){const chapter=h.chapter||library.find(x=>x.id===(h.chapterId||h.studyId))?.chapter||'Глава не записана';lines.push('\n'+h.title+' · '+chapter+'\n'+h.line+'; игра за '+(h.side==='both'?'обе стороны':h.side==='w'?'белых':'чёрных')+'.','Начало: '+fmt(h.startedAt)+'; завершение: '+fmt(h.completedAt)+'.',`Ошибок: ${h.errors}; подсказок: ${h.hints}.`,h.order==='random'?'Порядок: случайный '+(h.randomScope==='study'?'между главами студии.':'внутри главы.'):'Порядок: по очереди.');for(const a of h.answers)lines.push(`${a.ply}: ${a.played} — ${a.correct?'верно':'ошибка; ожидалось '+a.expected}, ${(a.ms/1000).toFixed(2)} с.`)}if(running)lines.push('\nТекущий вариант не завершён.');lines.push('\nПроанализируй ошибки и запоминание вариантов.');return lines.join('\n')}
+function changeOrder(){el('openingLine').value='all';if(lineIndices.length||running||waitingForNext||studying)start();else render()}
+el('openingRandom').onclick=()=>{randomOrder=!randomOrder;changeOrder()};el('openingRandomScope').onchange=changeOrder;
+el('openingStudyMode').onclick=()=>{studying=!studying;if(lineIndices.length)beginLine();else start()};el('openingForward').onclick=()=>{if(!studying||ply>=line.length)return;lastMove=game.move(line[ply].san);ply++;waitingForNext=ply===line.length&&lineCursor+1<lineIndices.length;render()};el('openingBack').onclick=()=>{if(!studying||ply===0)return;game.undo();ply--;selected=null;lastMove=game.history({verbose:true}).at(-1)||null;waitingForNext=false;render()};
+el('openingHelp').onclick=()=>{if(!running||!isUserTurn())return;hints++;const m=line[ply];el('openingFeedback').textContent='Ход по варианту: '+m.san+' ('+m.from+' → '+m.to+').';render()};el('openingBoth').onclick=()=>{bothSides=!bothSides;if(running||waitingForNext)start();else render()};el('openingRepeat').onclick=()=>{if(lineIndices.length)beginLine()};el('openingStart').onclick=start;el('openingNext').onclick=()=>{if(waitingForNext){lineCursor++;beginLine()}};el('openingSide').onchange=renderBoard;el('openingLine').onchange=()=>{lineIndices=[];lineCursor=0;activeLineIndex=el('openingLine').value==='all'?0:Number(el('openingLine').value);if(studying)start();else render()};
+el('openingCopy').onclick=async()=>{try{await navigator.clipboard.writeText(report());el('openingCopy').textContent='Скопировано — вставьте в чат'}catch{el('openingExport').focus();el('openingExport').select();el('openingCopy').textContent='Текст выделен — скопируйте'}};
+document.addEventListener('visibilitychange',()=>{generation++;clearTimeout(timer);if(!document.hidden&&visible)schedule()});visible=true;render();
+})();
+</script></body></html>

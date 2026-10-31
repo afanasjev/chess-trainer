@@ -1,0 +1,14 @@
+[Event "Ферзевый гамбит: Глава 2"]
+[Date "2021.12.29"]
+[Result "*"]
+[Variant "Standard"]
+[ECO "D37"]
+[Opening "Queen's Gambit Declined: Harrwitz Attack, Orthodox Defense"]
+[StudyName "Ферзевый гамбит"]
+[ChapterName "Глава 2"]
+[ChapterURL "https://lichess.org/study/cbgAvVjL/xwk4v6c9"]
+[Annotator "https://lichess.org/@/Egor-Kovalev"]
+[UTCDate "2021.12.29"]
+[UTCTime "15:47:27"]
+
+1. d4 d5 (1... c5 { [%cal Gc5d4,Ge5d4,Gd4d5] } 2. d5 e6 3. c4 { [%cal Gc4d5] } 3... exd5 4. cxd5 d6 5. Nc3 Nf6 6. e4) 2. c4 e6 (2... Nf6 { [%cal Gc8f5] } 3. cxd5 Nxd5 { [%cal Ge2e4] } 4. e4 Nf6 5. Nc3) 3. Nc3 Nf6 4. Nf3 Be7 5. Bf4 O-O 6. e3 c6 7. Bd3 Nbd7 8. O-O { [%cal Gf1e1,Gd1c2,Ga1d1,Ge3e4,Gf3e5,Ga2a3,Gb2b4,Gf2f4,Gd1e2] } *

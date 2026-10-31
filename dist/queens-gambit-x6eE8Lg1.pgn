@@ -1,0 +1,14 @@
+[Event "Ферзевый гамбит: Глава 1"]
+[Date "2021.09.07"]
+[Result "*"]
+[Variant "Standard"]
+[ECO "D20"]
+[Opening "Queen's Gambit Accepted: Central Variation, Greco Variation"]
+[StudyName "Ферзевый гамбит"]
+[ChapterName "Глава 1"]
+[ChapterURL "https://lichess.org/study/cbgAvVjL/x6eE8Lg1"]
+[Annotator "https://lichess.org/@/Egor-Kovalev"]
+[UTCDate "2021.09.07"]
+[UTCTime "18:08:40"]
+
+1. d4 d5 2. c4 { [%cal Gd5c4,Ge2e4] } 2... dxc4 3. e4 { [%csl Gc4][%cal Gd4e5,Gd4c5,Ge4d5,Ge4f5,Gf1c4] } 3... b5 { [%cal Ga2a4] } (3... Nc6 { [%cal Gc6d4] } 4. Nf3 Bg4 5. d5 Ne5 { [%cal Ge5c4] } 6. Bf4 { [%csl Gc4][%cal Gf4e5] } 6... Nxf3+ 7. gxf3 { [%csl Gc4] } 7... Bd7 8. Bxc4 { [%cal Gh1g1,Gg1g7] }) (3... Nf6 { [%cal Gf6e4] } 4. Nc3 Nc6 { [%cal Gc6d4] } 5. Nf3 { [%csl Gf1][%cal Gf1c4] }) 4. a4 c6 5. axb5 cxb5 6. Nc3 a6 (6... Bd7 7. b3 { [%cal Gb3c4,Gf1c4] } 7... cxb3 8. Qxb3 { [%csl Gb5] }) 7. Nxb5 { [%cal Ga1a8] } *

@@ -1,0 +1,18 @@
+{
+  "retrieved": "2026-10-26",
+  "syzygy_mirror": "https://tablebase.lichess.ovh/tables/standard/",
+  "sha256": {
+    "KBvK.rtbw": "bc0d8ab3560de9038460f0e8f61e3b7efd3e3d0327d19ae0387c0da7ddeb244d",
+    "KBvKP.rtbw": "7ea5491c17771a47cb558bf3ac3d6fe6a85e2075daa34f8ec4fa91b4319c1fe5",
+    "KNvK.rtbw": "9d3518b12df3d2006441df758bce31e961346e70a11920aaad75c647003bb6e7",
+    "KNvKP.rtbw": "f21332cc4b380764847d6c32511dee16cbf56e65604596ca24e784f8e4c13bdb",
+    "KPvK.rtbw": "02fd2bdcd92821c869458f019f63524def1c9e7a2862ca8d2b16dc7712b16183",
+    "KPvK.rtbz": "ad01af2076183c90ccee662ca6c5d74da3222ff1fee47c01b5d4e56ed01938de",
+    "KPvKP.rtbw": "6d21860e47a91d00841ccf63a657dc09b78f602e0ec005f925470e2449e1ae05",
+    "KPvKP.rtbz": "2967707c971ec847c5ef3fe6f1934166aeb10c8cc151a1ae9d7c922c5aed1fc3",
+    "KQvK.rtbw": "517667dff787162dbb1ed9d5d6484d30ee854e686ee0675c08d99ecf045d2d50",
+    "KQvKP.rtbw": "2f92788170e8a5c05608f44a47fd42f3f4fff372d0af64633c56bd081039d8f9",
+    "KRvK.rtbw": "386fbde73308e49a4207836922c68b30b664e83c5a37f7fa37305a15cd16f2f1",
+    "KRvKP.rtbw": "3968c2bfced3a5ecfbb54166ec13d4e7b70f3b03c495af4ae87cad2ec75a0749"
+  }
+}
