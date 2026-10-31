@@ -2297,7 +2297,8 @@ window.OPENING_LIBRARY = [
           "to": "f3"
         }
       ]
-    ]
+    ],
+    "defaultSide": "w"
   },
   {
     "id": "cbgAvVjL-xwk4v6c9",
@@ -2488,6 +2489,7 @@ window.OPENING_LIBRARY = [
           "to": "e4"
         }
       ]
-    ]
+    ],
+    "defaultSide": "w"
   }
 ];
